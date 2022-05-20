@@ -1,0 +1,13 @@
+kind: pipeline
+name: markdown-checker
+
+steps:
+    - name: check-links
+      image: node:14-alpine
+      commands:
+          - npm i -g markdown-link-check
+          - find . -name \*.md -not -path "./node_modules/*" | xargs -n1 markdown-link-check --config .markdown-lint-check.config.json
+
+trigger:
+    event:
+        - pull_request
