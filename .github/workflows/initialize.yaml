@@ -1,0 +1,16 @@
+# This workflow initializes a newly created repository.
+#
+# Initialization encompasses:
+# - TBD
+
+name: Initialize the repository
+on:
+  create
+jobs:
+  echo:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: |
+          echo "New repository created"
