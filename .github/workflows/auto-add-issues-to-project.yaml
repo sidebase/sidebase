@@ -39,7 +39,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
           ISSUE_ID: ${{ github.event.issue.node_id }}
-          PROJECT_ID: PN_kwDOA5D4oc4ABjh5
+          PROJECT_ID: ${{ secrets.GH_PROJECT_ID }}
         run: |
           gh api graphql -f query='
             mutation($project:ID!, $issue:ID!) {
