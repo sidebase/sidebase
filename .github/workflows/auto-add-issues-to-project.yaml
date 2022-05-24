@@ -1,7 +1,7 @@
-# This workflow adds a newly created issue to the "SIDESTREAM" project
+# This workflow adds a newly created issue to the main organization-project
 #
-# The project can be found here: https://github.com/orgs/sidestream-tech/projects/10
-# To get the `PROJECT_ID` used in belows action, execute the following commands using the github `gh` cli:
+# The project can be found here: https://github.com/orgs/sidestream-tech/projects?type=beta
+# To get the `PROJECT_ID` of project with `url_number=PROJECT_NUMBER_FROM_GITHUB_PROJECTS_URL` used in belows action, execute the following commands using the github `gh` cli:
 #
 # ```sh
 # > gh auth login
@@ -19,14 +19,14 @@
 #           }
 #         }
 #       }
-#     }' -f org=sidestream-tech -F number=10 --jq '.data.organization.projectNext.id'
+#     }' -f org=sidestream-tech -F number=PROJECT_NUMBER_FROM_GITHUB_PROJECTS_URL --jq '.data.organization.projectNext.id'
 # ```
 #
 # The `GH_WORKFLOW_TOKEN` of this flow needs the following permissions:
 # - admin:org - as project boards are organization wide
 # - repo - this full level is sadly required in order to manage repository issues
 
-name: Add issue to project "SIDESTREAM"
+name: Add issue to the main organization-project
 on:
   issues:
     types:
