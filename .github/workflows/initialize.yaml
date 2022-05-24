@@ -5,12 +5,14 @@
 
 name: Initialize the repository
 on:
-  create
+  create:
 jobs:
   echo:
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    env:
+      GH_REF: ${{ github.ref }}
     steps:
       - name: Echo
         run: |
           echo "New repository created"
+          echo $GH_REF
