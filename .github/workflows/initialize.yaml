@@ -5,14 +5,23 @@
 
 name: Initialize the repository
 on:
-  create:
+  workflow_dispatch:
+    inputs:
+      scaffold:
+        description: 'Which scaffold to use for repository initialization'
+        required: true
+        type: choice
+        options:
+        - test
 jobs:
   echo:
     runs-on: ubuntu-latest
     env:
       GH_REF: ${{ github.ref }}
+      SCAFFOLD: ${{ github.event.inputs.scaffold }}
     steps:
       - name: Echo
         run: |
           echo "New repository created"
           echo $GH_REF
+          echo $SCAFFOLD
