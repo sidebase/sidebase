@@ -7,6 +7,10 @@ name: Initialize the repository
 on:
   workflow_dispatch:
     inputs:
+      repo_name:
+        description: 'Name of the target repository'
+        required: true
+        type: string
       scaffold:
         description: 'Which scaffold to use for repository initialization'
         required: true
@@ -14,14 +18,14 @@ on:
         options:
         - test
 jobs:
-  echo:
+  create_repo:
     runs-on: ubuntu-latest
     env:
       GH_REF: ${{ github.ref }}
       SCAFFOLD: ${{ github.event.inputs.scaffold }}
+      REPO_NAME: ${{ github.event.inputs.repo_name }}
+      GITHUB_TOKEN: ${{ secrets.GH_WORKFLOW_TOKEN }}
     steps:
-      - name: Echo
+      - name: Create the repository
         run: |
-          echo "New repository created"
-          echo $GH_REF
-          echo $SCAFFOLD
+          gh repo create --private sidestream-tech/$REPO_NAME
