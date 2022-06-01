@@ -25,7 +25,6 @@
 # The `GH_WORKFLOW_TOKEN` of this flow needs the following permissions:
 # - admin:org - as project boards are organization wide
 # - repo - this full level is sadly required in order to manage repository issues
-
 name: Add issue to the main organization-project
 on:
   issues:
