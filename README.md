@@ -16,7 +16,7 @@ are already done for you. Each different "flavor" of this scaffold has its own b
 ## Usage
 
 To use this in your project:
-1. Click "New Repository" using the little pluc icon at the top right
+1. Click "New Repository" using the little plus icon at the top right
 2. At the top click on the select of the "Repository Template" section and select this repository name
 3. Check "Include all branches"
 4. Finish repository creation
