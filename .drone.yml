@@ -1,13 +1,26 @@
-kind: pipeline
-name: markdown-checker
+kind: template
+load: pipeline-builder.star
+data:
+  pipelines:
+  - kind: pipeline
+    name: editorconfig-checker
+    steps:
+      - name: check-editorconfig
+        image: mstruebing/editorconfig-checker
+        commands:
+          - ec --exclude .git .
+    trigger:
+      event:
+        - pull_request
 
-steps:
-    - name: check-links
-      image: node:14-alpine
-      commands:
-          - npm i -g markdown-link-check
-          - find . -name \*.md -not -path "./node_modules/*" | xargs -n1 markdown-link-check --config .markdown-lint-check.config.json
-
-trigger:
-    event:
+  - kind: pipeline
+    name: markdown-checker
+    steps:
+      - name: check-links
+        # Source: https://github.com/tcort/markdown-link-check
+        image: ghcr.io/tcort/markdown-link-check:stable
+        commands:
+          - find . -name *.md -not -path "./node_modules/*" | xargs -n1 markdown-link-check --config .markdown-lint-check.config.json
+    trigger:
+      event:
         - pull_request

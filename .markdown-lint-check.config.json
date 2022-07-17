@@ -1,0 +1,7 @@
+{
+  "ignorePatterns": [
+    {
+      "pattern": ".*github\\.com/sidestream\\-tech.*"
+    }
+  ]
+}
