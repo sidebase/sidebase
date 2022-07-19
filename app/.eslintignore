@@ -1,0 +1,9 @@
+dist
+public
+
+# ignore all lint errors by the /storybook-static folder
+**/storybook-static
+
+# ignore generate imports
+auto-imports.d.ts
+components.d.ts

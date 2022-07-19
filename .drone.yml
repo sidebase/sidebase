@@ -24,3 +24,34 @@ data:
     trigger:
       event:
         - pull_request
+
+  - kind: pipeline
+    name: nuxt3-test-and-lint
+
+    steps:
+      - name: install
+        image: node:16.14.2
+        commands:
+          - npm ci
+
+      - name: build
+        image: node:16.14.2
+        depends_on: [install]
+        commands:
+          - npm run build
+
+      - name: lint
+        image: node:16.14.2
+        depends_on: [build]
+        commands:
+          - npm run lint
+
+      - name: test
+        image: node:16.14.2
+        depends_on: [build]
+        commands:
+          - npm run test
+
+    trigger:
+      event:
+        - push

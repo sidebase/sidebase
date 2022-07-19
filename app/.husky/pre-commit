@@ -1,0 +1,8 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Check types
+npm run lint:types
+
+# Lint and fix staged files (e.g.: fix the import order of a file and still commit it afterwards)
+npx lint-staged

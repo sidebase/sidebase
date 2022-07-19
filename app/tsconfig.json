@@ -1,0 +1,26 @@
+{
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  // Storybook exports both react JSX and Vue SFC template types for some reason,
+  // then typescript checking prefers JSX types and throws errors for SFCs like:
+  //
+  // "error TS2322: Type '{ class: string; }' is not assignable to type 'DetailedHTMLProps<HTMLAttributes<HTMLSpanElement>, HTMLSpanElement>'."
+  //
+  // To avoid this we exclude the stories for now. See https://github.com/johnsoncodehk/volar/discussions/592
+  // for the issue description and probably at some point resolution.
+  "exclude": [
+    "**/*.stories.ts",
+    "coverage",
+    "dist",
+    "node_modules"
+  ],
+  "compilerOptions": {
+    // This is also part of volar#592, see above
+    "types": [
+      "vite/client",
+      "@types/testing-library__jest-dom"
+    ],
+    // Preserve type checking in SFC templates, see https://github.com/johnsoncodehk/volar/issues/1219#issuecomment-1104548432
+    "jsx": "preserve"
+  }
+}

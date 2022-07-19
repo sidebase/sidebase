@@ -1,0 +1,59 @@
+{
+  "private": true,
+  "engines": {
+    "node": "16.14.2",
+    "npm": "8.5.0"
+  },
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "start": "node .output/server/index.mjs",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "lint": "npm-run-all lint:*",
+    "lint:types": "nuxi typecheck",
+    "lint:style": "nuxi prepare && eslint .",
+    "test": "nuxi prepare && vitest --run",
+    "test:watch": "nuxi prepare && vitest",
+    "prepare": "cd .. && husky install",
+    "postinstall": "nuxi prepare"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config-vue": "^0.25.2",
+    "@babel/core": "^7.18.2",
+    "@storybook/addon-actions": "^6.5.8",
+    "@storybook/addon-essentials": "^6.5.8",
+    "@storybook/addon-links": "^6.5.8",
+    "@storybook/builder-vite": "^0.1.36",
+    "@storybook/vue3": "^6.5.8",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/vue": "^6.6.1",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "@vitejs/plugin-vue": "^2.3.3",
+    "ant-design-vue": "^3.2.6",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.4",
+    "c8": "^7.11.3",
+    "eslint": "^8.20.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "husky": "^8.0.1",
+    "jsdom": "^20.0.0",
+    "lint-staged": "^13.0.1",
+    "npm-run-all": "^4.1.5",
+    "nuxt": "^3.0.0-rc.6",
+    "postcss": "^8.4.12",
+    "tailwindcss": "^3.1.2",
+    "unplugin-auto-import": "^0.9.3",
+    "unplugin-vue-components": "^0.21.1",
+    "vite-plugin-eslint": "^1.6.1",
+    "vite-svg-loader": "^3.3.0",
+    "vitest": "^0.18.1",
+    "vue": "^3.2.37",
+    "vue-loader": "^17.0.0",
+    "vue-tsc": "^0.38.7"
+  },
+  "lint-staged": {
+    "*{.js,.ts,.vue}": "eslint --fix"
+  }
+}
