@@ -8,7 +8,7 @@ data:
       - name: check-editorconfig
         image: mstruebing/editorconfig-checker
         commands:
-          - ec --exclude .git .
+          - ec -v --exclude .git .
     trigger:
       event:
         - pull_request
@@ -32,26 +32,30 @@ data:
       - name: install
         image: node:16.14.2
         commands:
+          - cd app
           - npm ci
 
       - name: build
         image: node:16.14.2
         depends_on: [install]
         commands:
+          - cd app
           - npm run build
 
       - name: lint
         image: node:16.14.2
-        depends_on: [build]
+        depends_on: [install]
         commands:
+          - cd app
           - npm run lint
 
       - name: test
         image: node:16.14.2
-        depends_on: [build]
+        depends_on: [install]
         commands:
+          - cd app
           - npm run test
 
     trigger:
       event:
-        - push
+        - pull_request
