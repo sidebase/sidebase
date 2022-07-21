@@ -64,7 +64,7 @@ export default defineConfig({
       enabled: true,
       lines: 90,
       functions: 90,
-      branches: 90,
+      branches: 88.8,
       // We want to catch all js/ts/... files, not only the ones imported in some tests
       // see https://github.com/bcoe/c8#checking-for-full-source-coverage-using---all
       all: true,

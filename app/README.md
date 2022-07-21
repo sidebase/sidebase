@@ -24,6 +24,7 @@ This scaffold has the following features:
         - `npm run test -- -u`: Update component snapshots after components changed
         - `npm run test -- -t "some test-text"`: Run all tests with `some test-text` in their `test(...)` description
     - `@testing-library/vue` for easy and best-practice component tests, [see example here](https://testing-library.com/docs/vue-testing-library/examples)
+    - breakpoint debugging in VS Code
 - CSS usable without imports
     - Utility & Styling: TailwindCSS 3
     - Components: Ant Design Vue with component-auto-import
@@ -31,6 +32,7 @@ This scaffold has the following features:
     - Pre-commit checking (husky) & fixing (lint-staged)
     - drone CI pipeline to linting, testing, typing checks
     - nuxt-link support in tests and storybook
+    - debug sql database queries by setting `logging: true` in the `database/index.ts`: This will show you a live log of all ongoing database queries which is super helpful to debug database problems
 
 ## Local Setup
 
@@ -48,9 +50,23 @@ If this is not the first time you use `npm` / `node` v16 on your setup:
 > npm run test
 > npm run test:watch  # watch tests
 
+# run a specific test by text
+> npm run test -- -t "text of test"
+
+# update html screenshots of components
+> npm run test -- -u
+
 # linting & type checks
 > npm run lint
 > npm run lint -- --fix  # autofix lints
+
+# breakpoint debugging (zero-config in VS Code)
+# 1. Open the command palette (CMD / CTRL + SHIFT + P)
+# 2. Select "Debug: JavaScript Debug Terminal"
+# 3. Run any `npm` command inside `app/`, e.g.: `npm run test`
+# 4. Your code editor colors should change a bit (e.g.: to orange) while executing the command, the left side should show deep execution insights
+# 5. Set breakpoints (click left of line count in editor - red dot should appear) - the debugger will automatically work and stop at them and allow you to inspect variables
+> npm run test  # also works for more specific tests via `-t` option (see above)
 ```
 
 ### First time setup

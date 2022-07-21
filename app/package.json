@@ -18,6 +18,10 @@
     "prepare": "cd .. && husky install",
     "postinstall": "nuxi prepare"
   },
+  "dependencies": {
+    "pg": "^8.7.3",
+    "typeorm": "^0.3.7"
+  },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.25.2",
     "@babel/core": "^7.18.2",
@@ -28,6 +32,7 @@
     "@storybook/vue3": "^6.5.8",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/vue": "^6.6.1",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "@vitejs/plugin-vue": "^2.3.3",
@@ -43,6 +48,7 @@
     "npm-run-all": "^4.1.5",
     "nuxt": "^3.0.0-rc.6",
     "postcss": "^8.4.12",
+    "supertest": "^6.2.4",
     "tailwindcss": "^3.1.2",
     "unplugin-auto-import": "^0.9.3",
     "unplugin-vue-components": "^0.21.1",
@@ -54,6 +60,6 @@
     "vue-tsc": "^0.38.7"
   },
   "lint-staged": {
-    "*{.js,.ts,.vue}": "eslint --fix"
+    "*{.js,.ts,.vue}": "eslint --fix ."
   }
 }

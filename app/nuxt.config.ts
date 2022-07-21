@@ -19,4 +19,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  nitro: {
+    plugins: [
+      '~/server/database/nitroPluginInitTypeOrmOnStartup',
+    ],
+  },
 })

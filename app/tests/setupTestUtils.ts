@@ -7,8 +7,8 @@ import { cleanup } from '@testing-library/vue'
 expect.extend(matchers)
 
 // Ensure that console.warn and console.error have not been called
-const consoleSpyWarn = vi.spyOn(console, 'warn')
-const consoleSpyError = vi.spyOn(console, 'error')
+export const consoleSpyWarn = vi.spyOn(console, 'warn')
+export const consoleSpyError = vi.spyOn(console, 'error')
 
 afterAll(() => {
   // There must be no `console.warn`s
