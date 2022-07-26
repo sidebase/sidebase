@@ -1,0 +1,22 @@
+image:
+  registry: docker.io
+  repository: bitnami/postgresql
+  tag: 14.3.0-debian-11-r3
+  pullPolicy: IfNotPresent
+auth:
+  enablePostgresUser: true
+  postgresPassword: "postgres"
+  database: "postgres"
+readReplicas:
+  replicaCount: 0
+primary:
+  persistence:
+    enabled: true
+    size: 8Gi
+  resources:
+    limits:
+      memory: 500Mi
+      cpu: 300m
+    requests:
+      memory: 500Mi
+      cpu: 100m

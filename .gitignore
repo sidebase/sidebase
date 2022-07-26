@@ -18,6 +18,9 @@ yarn-error.log*
 ehthumbs.db
 Thumbs.db
 
+# helmsman generated tmp folder
+.helmsman-tmp
+
 # Coverage directory used by tools like istanbul
 coverage
 

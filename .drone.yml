@@ -1,7 +1,73 @@
 kind: template
 load: pipeline-builder.star
 data:
+  builds:
+    - name: publish-fullstack-nuxt3-on-pr-push
+      repository: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3
+      tags:
+        - "pr-${DRONE_PULL_REQUEST}"
+      labels:
+        - key: org.opencontainers.image.source
+          value: https://github.com/sidestream-tech/the-scaffold
+      path_to_dockerfile: app/Dockerfile
+      path_to_context: app/
+      tags_to_cache_from:
+        - "main"
+      trigger:
+        event:
+          - pull_request
+
+    - name: publish-fullstack-nuxt3-template
+      repository: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3
+      tags:
+        - "main"
+        - "${DRONE_COMMIT_SHA}"
+      labels:
+        - key: org.opencontainers.image.source
+          value: https://github.com/sidestream-tech/the-scaffold
+      path_to_dockerfile: app/Dockerfile
+      path_to_context: app/
+      tags_to_cache_from:
+        - "main"
+      trigger:
+        event:
+          - push
+        branch:
+          - fullstack-nuxt3
+
   pipelines:
+  - kind: pipeline
+    types: kubernetes
+    name: fullstack-nuxt3-dummy-deployment
+    environment:
+      GIT_LFS_SKIP_SMUDGE: 1
+    clone:
+      depth: 1
+    trigger:
+      event:
+        - push
+      branch:
+        - fullstack-nuxt3
+    steps:
+      - name: deploy
+        image: deusavalon/aws-chamber-helmsman:0.1.0
+        environment:
+          AWS_ACCESS_KEY_ID:
+            from_secret: "AWS_ACCESS_KEY_ID_FOR_KUBECONFIG"
+          AWS_SECRET_ACCESS_KEY:
+            from_secret: "AWS_SECRET_ACCESS_KEY_FOR_KUBECONFIG"
+          AWS_DEFAULT_REGION: "eu-central-1"
+          SIDECHART_USERNAME:
+            from_secret: "SIDECHART_USERNAME"
+          SIDECHART_TOKEN:
+            from_secret: "SIDECHART_TOKEN"
+        commands:
+          - cd kubernetes/helm
+          - aws eks update-kubeconfig --name eks-cluster-sidestream
+          - helmsman --apply --debug -f helmsman.yml
+    depends_on:
+      - publish-fullstack-nuxt3-template
+
   - kind: pipeline
     name: editorconfig-checker
     steps:
@@ -36,33 +102,39 @@ data:
 
     steps:
       - name: install
-        image: node:16.14.2
+        image: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3:pr-${DRONE_PULL_REQUEST}
         commands:
           - cd app
           - npm ci
 
       - name: build
-        image: node:16.14.2
+        image: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3:pr-${DRONE_PULL_REQUEST}
         depends_on: [install]
         commands:
           - cd app
           - npm run build
 
       - name: lint
-        image: node:16.14.2
+        image: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3:pr-${DRONE_PULL_REQUEST}
         depends_on: [install]
         commands:
           - cd app
           - npm run lint
 
       - name: test
-        image: node:16.14.2
+        image: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3:pr-${DRONE_PULL_REQUEST}
         depends_on: [install]
         environment:
           NUXT_DATABASE_HOST: database
         commands:
           - cd app
           - npm run test
+
+    image_pull_secrets:
+      - DOCKER_CONFIG_JSON
+
+    depends_on:
+      - publish-fullstack-nuxt3-on-pr-push
 
     trigger:
       event:
