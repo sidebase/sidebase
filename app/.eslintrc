@@ -20,6 +20,7 @@
         "@typescript-eslint/brace-style": [
             "error",
             "1tbs"
-        ]
+        ],
+        "no-unused-vars": "error"
     }
 }

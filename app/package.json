@@ -20,11 +20,13 @@
   },
   "dependencies": {
     "pg": "^8.7.3",
-    "typeorm": "^0.3.7"
+    "typeorm": "^0.3.7",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.25.2",
     "@babel/core": "^7.18.2",
+    "@faker-js/faker": "^7.3.0",
     "@storybook/addon-actions": "^6.5.8",
     "@storybook/addon-essentials": "^6.5.8",
     "@storybook/addon-links": "^6.5.8",

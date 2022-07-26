@@ -26,5 +26,9 @@ COPY --from=production-base /app/.output /app/.output
 # Service hostname
 ENV NUXT_HOST=0.0.0.0
 
+# Service version
+ARG NUXT_APP_VERSION
+ENV NUXT_APP_VERSION=${NUXT_APP_VERSION}
+
 # start the app
 CMD [ "node", "/app/.output/server/index.mjs" ]

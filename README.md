@@ -7,6 +7,7 @@ This scaffold bootstraps a nuxt 3 project that permits developing a backend and 
     - database connection
     - testing
 - breakpoint debugging
+- `Base` database model that can be usefully extended by project typeorm-classes
 
 ## Development
 

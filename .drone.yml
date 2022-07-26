@@ -11,13 +11,15 @@ data:
           value: https://github.com/sidestream-tech/the-scaffold
       path_to_dockerfile: app/Dockerfile
       path_to_context: app/
+      build_args:
+        - 'NUXT_APP_VERSION=${DRONE_COMMIT_SHA:0:7}'
       tags_to_cache_from:
         - "main"
       trigger:
         event:
           - pull_request
 
-    - name: publish-fullstack-nuxt3-template
+    - name: publish-fullstack-nuxt3-on-merge-main
       repository: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3
       tags:
         - "main"
@@ -27,6 +29,8 @@ data:
           value: https://github.com/sidestream-tech/the-scaffold
       path_to_dockerfile: app/Dockerfile
       path_to_context: app/
+      build_args:
+        - 'NUXT_APP_VERSION=${DRONE_COMMIT_SHA:0:7}'
       tags_to_cache_from:
         - "main"
       trigger:
@@ -66,7 +70,7 @@ data:
           - aws eks update-kubeconfig --name eks-cluster-sidestream
           - helmsman --apply --debug -f helmsman.yml
     depends_on:
-      - publish-fullstack-nuxt3-template
+      - publish-fullstack-nuxt3-on-merge-main
 
   - kind: pipeline
     name: editorconfig-checker
@@ -102,27 +106,27 @@ data:
 
     steps:
       - name: install
-        image: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3:pr-${DRONE_PULL_REQUEST}
+        image: node:16.14.2
         commands:
           - cd app
           - npm ci
 
       - name: build
-        image: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3:pr-${DRONE_PULL_REQUEST}
+        image: node:16.14.2
         depends_on: [install]
         commands:
           - cd app
           - npm run build
 
       - name: lint
-        image: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3:pr-${DRONE_PULL_REQUEST}
+        image: node:16.14.2
         depends_on: [install]
         commands:
           - cd app
           - npm run lint
 
       - name: test
-        image: ghcr.io/sidestream-tech/the-scaffold/fullstack-nuxt3:pr-${DRONE_PULL_REQUEST}
+        image: node:16.14.2
         depends_on: [install]
         environment:
           NUXT_DATABASE_HOST: database
@@ -132,9 +136,6 @@ data:
 
     image_pull_secrets:
       - DOCKER_CONFIG_JSON
-
-    depends_on:
-      - publish-fullstack-nuxt3-on-pr-push
 
     trigger:
       event:
