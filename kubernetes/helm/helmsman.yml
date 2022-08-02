@@ -22,7 +22,7 @@ apps:
     namespace: "fullstack-nuxt3-dummy"
     enabled: true
     chart: "sidechart/sidechart"
-    version: "0.1.7"
+    version: "0.2.1"
     valuesFile: values-fullstack-nuxt3.yml
     test: false
     protected: false
@@ -34,6 +34,8 @@ apps:
     set:
       "commitShortSHA": "$DRONE_COMMIT_SHA"
       "image.tag": "$DRONE_COMMIT_SHA"
+      "imageCredentials.password": "$GITHUB_PACKAGES_TOKEN"
+
   postgresql:
     namespace: "fullstack-nuxt3-dummy"
     enabled: true

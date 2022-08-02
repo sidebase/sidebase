@@ -65,6 +65,8 @@ data:
             from_secret: "SIDECHART_USERNAME"
           SIDECHART_TOKEN:
             from_secret: "SIDECHART_TOKEN"
+          GITHUB_PACKAGES_TOKEN:
+            from_secret: "GITHUB_PACKAGES_TOKEN"
         commands:
           - cd kubernetes/helm
           - aws eks update-kubeconfig --name eks-cluster-sidestream

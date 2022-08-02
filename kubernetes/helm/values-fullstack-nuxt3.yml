@@ -5,7 +5,8 @@ image:
   tag: main
   pullPolicy: IfNotPresent
 
-imagePullSecret: "docker-config"
+imageCredentials:
+  password:
 
 volumes: []
 
@@ -45,8 +46,11 @@ oauth2:
   enabled: true
 
 ingress:
-  enabled: enabled
-  cert: cloudflare-issuer
+  enabled: true
+  class: nginx
+  certManager:
+    enabled: true
+    issuer: cloudflare-issuer
   url: fullstack-nuxt3.the-scaffold.k8s.sidestream.tech
   timeoutEnabled: false
   annotations: {}
