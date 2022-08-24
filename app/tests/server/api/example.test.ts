@@ -4,8 +4,10 @@ import { faker } from '@faker-js/faker'
 import type { PathMethodHandler } from '../../utils'
 import { setupApiAndDatabase } from '../../utils'
 import handlerExampleGet from '~/server/api/example/[id].get'
+import handlerExamplePatch from '~/server/api/example/[id].patch'
 import handlerExampleGetAll from '~/server/api/example/index'
 import { consoleSpyError } from '~/tests/setupTestUtils'
+import { Example } from '~/server/database/entities/Example'
 
 const endpointBasePath = '/example'
 const endpoints: PathMethodHandler[] = [{
@@ -16,6 +18,10 @@ const endpoints: PathMethodHandler[] = [{
   path: `${endpointBasePath}/:id`,
   method: 'get',
   handler: handlerExampleGet,
+}, {
+  path: `${endpointBasePath}/:id`,
+  method: 'patch',
+  handler: handlerExamplePatch,
 }]
 
 let request: SuperTest<Test>
@@ -34,9 +40,11 @@ describe(`GET ${endpointBasePath}`, () => {
   })
 })
 
-describe(`GET ${endpointBasePath}/:id`, () => {
+// Generate test cases that check if `id` parameter is correctly validated for `id` based endpoints
+const idBasedEndpoints = endpoints.filter(endpoint => endpoint.path.endsWith('/:id'))
+describe.each(idBasedEndpoints)(`$method ${endpointBasePath}/:id check 404 and 422 for parameter`, ({ method }) => {
   it('should throw a 404 error for an unknown id', async () => {
-    const response = await request.get(`${endpointBasePath}/${faker.datatype.uuid()}`)
+    const response = await request[method](`${endpointBasePath}/${faker.datatype.uuid()}`)
 
     expect(response.statusCode).toBe(404)
     expect(response.body).toStrictEqual({
@@ -51,28 +59,44 @@ describe(`GET ${endpointBasePath}/:id`, () => {
   })
 
   it('should throw a 422 error for a invalid id', async () => {
-    const response = await request.get(`${endpointBasePath}/bad-uuid`)
+    const response = await request[method](`${endpointBasePath}/bad-uuid`)
 
     expect(response.statusCode).toBe(422)
     expect(response.body).toStrictEqual({
+      data: {
+        issues: [
+          {
+            code: 'invalid_string',
+            message: 'Invalid uuid',
+            path: [
+              'id',
+            ],
+            validation: 'uuid',
+          },
+        ],
+        name: 'ZodError',
+      },
+      stack: [],
       statusCode: 422,
       statusMessage: 'Data validation failed',
-      stack: [],
-      data: {
-        value: { id: 'bad-uuid' },
-        path: 'id',
-        type: 'uuid',
-        errors: ['id must be a valid UUID'],
-        params: {
-          value: 'bad-uuid',
-          originalValue: 'bad-uuid',
-          path: 'id',
-          regex: {},
-        },
-        inner: [],
-        name: 'ValidationError',
-        message: 'id must be a valid UUID',
-      },
+    })
+  })
+})
+
+describe(`PATCH ${endpointBasePath}/:id`, () => {
+  it('should update an entity', async () => {
+    const exampleToCreate = { description: faker.lorem.word(), details: faker.lorem.paragraphs() }
+    const example = await Example.save<Example>(exampleToCreate)
+    expect(example.description).toBe(exampleToCreate.description)
+    expect(example.details).toBe(exampleToCreate.details)
+
+    const exampleUpdate = { description: faker.lorem.word(), details: faker.lorem.paragraphs() }
+    const response = await request.patch(`${endpointBasePath}/${example.id}`).send(exampleUpdate)
+
+    expect(response.statusCode).toBe(200)
+    expect(response.body).toStrictEqual({
+      id: example.id,
+      ...exampleUpdate,
     })
   })
 })

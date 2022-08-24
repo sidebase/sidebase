@@ -41,7 +41,7 @@ export const setupApiAndDatabase = async (routesToSetup: PathMethodHandler[]): P
   // Setup routes
   const router = createRouter()
   for (const { path, method, handler } of routesToSetup) {
-    router[method](path, handler)
+    router.add(path, handler, method)
   }
 
   // Setup app

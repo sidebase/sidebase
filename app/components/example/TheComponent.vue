@@ -46,7 +46,7 @@ const value = ref<string>(props.modelValue)
     <div class="mt-2">
       <h1>Icon:</h1>
       <p>This is a svg-icon that was imported and turned into a pseudo-component, that we can style just like any other element.</p>
-      <close-icon class="w-8" />
+      <CloseIcon class="w-8" />
     </div>
   </div>
 </template>

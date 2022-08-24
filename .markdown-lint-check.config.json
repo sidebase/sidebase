@@ -2,6 +2,9 @@
   "ignorePatterns": [
     {
       "pattern": ".*github\\.com/sidestream\\-tech.*"
+    },
+    {
+      "pattern": ".*localhost.*"
     }
   ]
 }

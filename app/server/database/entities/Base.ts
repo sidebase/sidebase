@@ -29,6 +29,8 @@ export abstract class Base extends BaseEntity {
     }
 
     await this.save()
+
+    return this
   }
 
   /**
@@ -67,21 +69,14 @@ export abstract class Base extends BaseEntity {
      * const options = { where: { id: 'some-id' }}
      *
      * // Will return `X[]` or throw a `404` api error
-     * X.findManyOrThrow(options)
+     * X.findMany(options)
      * ```
      */
-  static async findManyOrThrow<T extends BaseEntity>(
+  static async findMany<T extends BaseEntity>(
     this: { new (): T } & typeof BaseEntity,
     options: FindManyOptions<T> = {},
   ): Promise<T[]> {
-    let result: T[]
-    try {
-      result = await this.getRepository<T>().find(options)
-    } catch (error) {
-      console.error(error)
-      throw createError({ statusCode: 404, statusMessage: 'Failed to find records' })
-    }
-
+    const result: T[] = await this.getRepository<T>().find(options)
     return result
   }
 }

@@ -8,7 +8,7 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "start": "node .output/server/index.mjs",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "nuxi prepare && start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "lint": "npm-run-all lint:*",
     "lint:types": "nuxi typecheck",
@@ -21,7 +21,7 @@
   "dependencies": {
     "pg": "^8.7.3",
     "typeorm": "^0.3.7",
-    "yup": "^0.32.11"
+    "zod": "^3.18.0"
   },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.25.2",

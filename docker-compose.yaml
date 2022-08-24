@@ -16,3 +16,13 @@ services:
       interval: 1s
       timeout: 5s
       retries: 5
+  pgweb:
+    restart: unless-stopped
+    image: sosedoff/pgweb
+    ports:
+      - "8081:8081"
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@database:5432/postgres?sslmode=disable
+    depends_on:
+      database:
+        condition: service_healthy

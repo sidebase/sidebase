@@ -22,7 +22,9 @@ To start full-stack full app development (frontend, backend, database, ... runni
 > npm run dev
 ```
 
-To:
+Then visit [localhost:3000](http://localhost:3000) to see the webapp or [localhost:8081](http://localhost:8081) to see the database UI.
+
+Many more things are possible (and useful for development). To:
 - perform component development via `storybook`,
 - run `test`s,
 - run `lint`ing,
