@@ -1,13 +1,14 @@
-# The Scaffold: `fullstack-nuxt3`
+# SideBase
 
-This scaffold bootstraps a nuxt 3 project that permits developing a backend and a frontend using just nuxt 3. The application code is inside the `app/` folder. Read more [in it's README](./app/README.md). This scaffold provides out of the box:
+SideBase bootstraps a nuxt 3 project that permits developing a backend and a frontend using just nuxt 3. The application code is inside the `app/` folder. Read more [in it's README](./app/README.md). This scaffold provides out of the box:
 - a functional nuxt 3 setup (see in `app/`),
-- a drone pipeline for testing
 - a functional backend with:
     - database connection
     - testing
 - breakpoint debugging
 - `Base` database model that can be usefully extended by project typeorm-classes
+- database UI for easy development (devs) and testing (PMs)
+- VS Code plugin recommendations for the best development experience (DX)
 
 ## Development
 
@@ -31,3 +32,9 @@ Many more things are possible (and useful for development). To:
 - see how to get a debugger with breakpoints running
 
 or execute further, other commands, please have a look at the more detailed [readme of the fullstack app](./app/README.md).
+
+### FAQ
+
+1. I get `Bind for 0.0.0.0:5432 failed: port is already allocated` error?
+    - The problem is, that another application is already running on the port, in this case on port `5432`. It may be another docker container, try `docker ps` to find it, then `docker stop ID_OF_CONTAINER` to stop it
+    

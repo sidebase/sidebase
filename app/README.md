@@ -1,4 +1,4 @@
-# Nuxt 3 TypeScript Scaffold
+# App
 
 This is a project scaffold for a Nuxt 3 + Typescript application. Scaffolds are meant to help us to start new projects, Nuxt 3 is a frontend + backend ("fullstack") framework that natively enforces typed JavaScript ("TypeScript"). Nuxt 3 is based on Vue 3.
 

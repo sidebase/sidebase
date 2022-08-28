@@ -24,21 +24,26 @@ const ratingValue = ref(5)
 <template>
   <div class="h-screen flex items-center justify-center">
     <Head>
-      <Title>SIDESTREAM App</Title>
+      <Title>SideBase</Title>
     </Head>
     <div class="flex flex-col">
       <h1 class="text-xl ">
-        Welcome to the SIDESTREAM Nuxt 3 Fullstack Scaffold.
+        Welcome to the SideBase Nuxt 3 Fullstack Scaffold.
       </h1>
+      <p>We rate this scaffold with:</p>
       <a-rate v-model:value="ratingValue" class="mx-auto my-8" />
-      <a-spin v-if="pending" class="my-14" />
-      <a-list v-else-if="!error">
-        <a-list-item>Status: {{ data.status }}</a-list-item>
-        <a-list-item>Time: {{ data.time }}</a-list-item>
-        <a-list-item>Startup Time: {{ data.startupTime }}</a-list-item>
-        <a-list-item>Version: {{ data.nuxtAppVersion }}</a-list-item>
-      </a-list>
-      <p v-else>
+      <div v-if="!error">
+        <p>Live backend service status is:</p>
+        <a-divider />
+        <a-list>
+          <a-list-item>Status: {{ data.status }}</a-list-item>
+          <a-list-item>Time: {{ data.time }}</a-list-item>
+          <a-list-item>Startup Time: {{ data.startupTime }}</a-list-item>
+          <a-list-item>Version: {{ data.nuxtAppVersion }}</a-list-item>
+        </a-list>
+      </div>
+
+      <p v-else class="font-bold">
         An error occured. Health status could not be requested.
       </p>
     </div>

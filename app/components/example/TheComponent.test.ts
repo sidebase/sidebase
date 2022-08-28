@@ -20,7 +20,7 @@ describe('TheComponent', () => {
     const { emitted, getByPlaceholderText, getByText } = render(TheComponent, { props: { modelValue: '' } })
 
     // Enter text
-    const name = 'Nils'
+    const name = 'Peter'
     const nameInput = getByPlaceholderText('Your name...')
     await fireEvent.update(nameInput, name)
 
