@@ -5,7 +5,7 @@ import './assets/css/tailwind.css'
 
 // NOTE: Typehints for `data` should work (although it's coming from the API!!). If they
 //       do not work please debug your editor setup
-const { data, refresh, pending, error } = await useFetch('/api/healthz')
+const { data, refresh, error } = await useFetch('/api/healthz')
 
 let refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
