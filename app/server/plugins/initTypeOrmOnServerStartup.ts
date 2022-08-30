@@ -7,7 +7,7 @@ export default defineNitroPlugin(async () => {
     await initialize()
   } catch (error) {
     console.trace('Error thrown during DB initialization, aborting startup', error)
-    process.exit(1)
+    throw new Error('DB: Cancelling startup, as DB initialization failed')
   }
 
   console.log('DB: Successfully initialized database connection')
