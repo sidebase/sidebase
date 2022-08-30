@@ -1,5 +1,7 @@
 # SideBase
 
+![sidebase](./.github/sidebase.png)
+
 SideBase bootstraps a nuxt 3 project that permits developing a backend and a frontend using just nuxt 3. We want to show the world how enjoyable end-to-end typescript programming can be, displacing the myth that JS/TS-backends are no good. If you have any problems with this project (e.g., setting it up on your PC) [open an issue](https://github.com/sidestream-tech/sidebase/issues/new/choose) and we'll figure it out 🎉
 
 The application code is inside the `app/` folder. Read more [in it's README](./app/README.md). This scaffold provides out of the box:
