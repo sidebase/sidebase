@@ -28,9 +28,4 @@ export default defineNuxtConfig({
       '@babel/runtime',
     ],
   },
-  nitro: {
-    // plugins: [
-    //   '~/server/database/nitroPluginInitTypeOrmOnStartup',
-    // ],
-  },
 })
