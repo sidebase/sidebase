@@ -53,8 +53,9 @@ export default defineConfig({
   // still problems with Vite SSR + ant design,
   // see [this for source of fix](https://github.com/vueComponent/ant-design-vue/discussions/5210)
   // and [reported but unresolved here](https://github.com/vueComponent/ant-design-vue/issues/3997).
+  // For latest occurence + resolution see here: https://github.com/nuxt/framework/issues/6941#issuecomment-1229739856
   ssr: {
-    noExternal: ['moment', 'compute-scroll-into-view', 'ant-design-vue', '@ant-design/icons-vue'],
+    noExternal: ['moment', 'compute-scroll-into-view', 'ant-design-vue', '@ant-design/icons-vue', 'dayjs'],
   },
   // vitest configuration
   // see https://vitest.dev/config/
