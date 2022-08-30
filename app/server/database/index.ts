@@ -3,15 +3,11 @@ import { Example } from './entities/Example'
 import { isProduction } from '~/helpers'
 
 const AppDataSource = new DataSource({
-  type: 'postgres',
+  type: 'sqlite',
   // TODO: Only synchronize in production once we're stable
   synchronize: !isProduction || true,
   logging: false,
-  host: process.env.NUXT_DATABASE_HOST || 'localhost',
-  username: process.env.NUXT_DATABASE_USERNAME || 'postgres',
-  password: process.env.NUXT_DATABASE_PASSWORD || 'postgres',
-  port: Number(process.env.NUXT_DATABASE_PORT) || 5432,
-  database: process.env.NUXT_DATABASE_DATABASE || 'postgres',
+  database: ':memory:',
   entities: [Example],
 })
 
