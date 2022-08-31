@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     AListItem: typeof import('ant-design-vue/es')['ListItem']
     ARate: typeof import('ant-design-vue/es')['Rate']
     ExampleTheComponent: typeof import('./components/example/TheComponent.vue')['default']
+    'ExampleTheComponent.story': typeof import('./components/example/TheComponent.story.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

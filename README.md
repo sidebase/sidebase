@@ -25,7 +25,7 @@ The application code is inside the `app/` folder. Read more [in it's README](./a
 Then visit [localhost:3000](http://localhost:3000) to see the webapp or [localhost:8081](http://localhost:8081) to see the database UI.
 
 Many more things are possible (and useful for development). To:
-- perform component development via `storybook`,
+- perform component development via `histoire`,
 - run `test`s,
 - run `lint`ing,
 - see how to get a debugger with breakpoints running

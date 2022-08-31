@@ -31,6 +31,6 @@ describe('TheComponent', () => {
     // Check outcome
     const emits = emitted()
     expect(emits).toHaveProperty('submit')
-    expect(emits.submit).toMatchObject([[{ name }]])
+    expect(emits.submit).toMatchObject([[name]])
   })
 })

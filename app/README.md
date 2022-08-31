@@ -9,10 +9,10 @@ This scaffold has the following features:
     > docker run -p 3000:3000 --rm nuxt3-app
     # visit `localhost:3000`
     ```
-- Storybook support:
+- Component stories via `Histoire`:
     ```sh
     > npm i
-    > npm run storybook
+    > npm run story:dev
     ```
 - Linting & Formatting (`npm run lint`)
     - `npm run lint:style`: eslint for formatting & linting
@@ -31,7 +31,7 @@ This scaffold has the following features:
 - Miscallaneous
     - Pre-commit checking (husky) & fixing (lint-staged)
     - drone CI pipeline to linting, testing, typing checks
-    - nuxt-link support in tests and storybook
+    - nuxt-link support in tests and histoire
     - debug sql database queries by setting `logging: true` in the `database/index.ts`: This will show you a live log of all ongoing database queries which is super helpful to debug database problems
 
 ## Local Setup
@@ -43,8 +43,8 @@ If this is not the first time you use `npm` / `node` v16 on your setup:
 # development mode with hot reloading
 > npm run dev
 
-# component based development via storybook
-> npm run storybook
+# component based development via histoire
+> npm run story:dev
 
 # testing via vitest
 > npm run test

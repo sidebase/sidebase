@@ -2,10 +2,6 @@
 import { ref } from 'vue'
 import CloseIcon from '~/assets/icons/close.svg'
 
-interface ComponentFormSubmission {
-  name: string
-}
-
 const props = defineProps({
   modelValue: {
     type: String,
@@ -18,7 +14,7 @@ const props = defineProps({
 })
 
 defineEmits<{
-  (e: 'submit', value: ComponentFormSubmission): void
+  (e: 'submit', value: string): void
 }>()
 
 const value = ref<string>(props.modelValue)
@@ -28,7 +24,7 @@ const value = ref<string>(props.modelValue)
   <div class="m-1">
     <h1>Form:</h1>
     <p>An ant design form that emits a submit on click to the button. Note that we use is via an "auto-import", we did not need to perform a manual import in the scripts section.</p>
-    <form @submit.prevent="$emit('submit', { name: value })">
+    <form @submit.prevent="$emit('submit', value)">
       <div class="flex">
         <a-input v-model:value="value" :placeholder="placeholder" addon-before="Please enter your name:" />
         <a-button html-type="submit" type="primary">
@@ -38,7 +34,7 @@ const value = ref<string>(props.modelValue)
     </form>
     <div class="mt-2">
       <h1>Nuxt link:</h1>
-      <p>This is a nuxt-link, a nuxt native component that we can easily use in storybook. To do so, we mocked it inside the `preview.js` - mock more nuxt native elements there if needed.</p>
+      <p>This is a nuxt-link, a nuxt native component that we can easily use in histoire. To do so, we mocked it inside the `preview.js` - mock more nuxt native elements there if needed.</p>
       <nuxt-link to="/">
         Example link to somewhere
       </nuxt-link>

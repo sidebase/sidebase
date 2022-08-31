@@ -1,3 +1,4 @@
+/// <reference types="@histoire/plugin-vue/components" />
 import path from 'path'
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
@@ -82,7 +83,7 @@ export default defineConfig({
         'server',
         'app.vue',
       ],
-      exclude: ['**/*.stories.ts', '**/*.test.ts', 'app.vue'],
+      exclude: ['**/*.story.vue', '**/*.test.ts', 'app.vue'],
     },
     deps: {
       // `ant-design-vue` breaks vitest unless we inline it here,
