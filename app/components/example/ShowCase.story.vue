@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { faker } from '@faker-js/faker'
 import { hstEvent } from 'histoire/client'
-import TheComponent from './TheComponent.vue'
+import ShowCase from './ShowCase.vue'
 
 const placeHolderEmpty = ref({
   modelValue: '',
@@ -24,13 +24,13 @@ const submit = ($event: string) => hstEvent('Submitted', $event)
 <template>
   <Story title="The Component">
     <Variant title="No Placeholder">
-      <TheComponent v-model="placeHolderEmpty.modelValue" :placeholder="placeHolderEmpty.placeholder" @submit="submit" />
+      <ShowCase v-model="placeHolderEmpty.modelValue" :placeholder="placeHolderEmpty.placeholder" @submit="submit" />
     </Variant>
     <Variant title="With Placeholder">
-      <TheComponent v-model="withPlaceholder.modelValue" :placeholder="withPlaceholder.placeholder" @submit="submit" />
+      <ShowCase v-model="withPlaceholder.modelValue" :placeholder="withPlaceholder.placeholder" @submit="submit" />
     </Variant>
     <Variant title="Prefilled">
-      <TheComponent v-model="prefilled.modelValue" :placeholder="prefilled.placeholder" @submit="submit" />
+      <ShowCase v-model="prefilled.modelValue" :placeholder="prefilled.placeholder" @submit="submit" />
     </Variant>
   </Story>
 </template>

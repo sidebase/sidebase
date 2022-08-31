@@ -36,15 +36,15 @@ export default defineConfig({
     // Make composable, components and ant-design imports work inside `vitest`, `storybook`
     pluginVue,
     Components({
-      dirs: ['components'],
+      dirs: ['~/components'],
       directoryAsNamespace: true,
       resolvers: [AntDesignVueResolver()],
       include,
     }),
     AutoImport({
       include,
-      imports: [],
-      dirs: ['composables'],
+      imports: ['vue', 'vue-router'],
+      dirs: ['~/composables'],
       vueTemplate: true,
     }),
     svgLoader(),
