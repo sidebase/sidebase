@@ -49,9 +49,7 @@ export default defineConfig({
     }),
     svgLoader(),
   ],
-  // @ts-expect-error: Missing ssr key
-  // Make `ant-design-vue` work as at the moment there's
-  // still problems with Vite SSR + ant design,
+  // Make `ant-design-vue` work as at the moment there's still problems with Vite SSR + ant design,
   // see [this for source of fix](https://github.com/vueComponent/ant-design-vue/discussions/5210)
   // and [reported but unresolved here](https://github.com/vueComponent/ant-design-vue/issues/3997).
   // For latest occurence + resolution see here: https://github.com/nuxt/framework/issues/6941#issuecomment-1229739856
