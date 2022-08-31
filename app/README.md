@@ -1,8 +1,8 @@
 # App
 
-This is a project scaffold for a Nuxt 3 + Typescript application. Scaffolds are meant to help us to start new projects, Nuxt 3 is a frontend + backend ("fullstack") framework that natively enforces typed JavaScript ("TypeScript"). Nuxt 3 is based on Vue 3.
+This is a project starter for your Nuxt 3 + Typescript application. This starter is meant to help you to start new projects, Nuxt 3 is a frontend + backend ("fullstack") framework that natively enforces typed JavaScript ("TypeScript"). Nuxt 3 is based on Vue 3.
 
-This scaffold has the following features:
+This starter has the following features:
 - (slim) docker ready
     ```sh
     > docker build -t nuxt3-app .
@@ -30,8 +30,8 @@ This scaffold has the following features:
     - Components: Ant Design Vue with component-auto-import
 - Miscallaneous
     - Pre-commit checking (husky) & fixing (lint-staged)
-    - drone CI pipeline to linting, testing, typing checks
-    - nuxt-link support in tests and histoire
+    - github CI pipeline to linting, testing, typing checks
+    - nuxt-component support in tests and histoire
     - debug sql database queries by setting `logging: true` in the `database/index.ts`: This will show you a live log of all ongoing database queries which is super helpful to debug database problems
 
 ## Local Setup
