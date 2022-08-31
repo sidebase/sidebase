@@ -21,15 +21,7 @@ export default defineNuxtConfig({
     strict: true,
   },
   build: {
-    // Get tailwind working
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
-    },
     transpile,
   },
+  modules: ['@nuxtjs/tailwindcss'],
 })

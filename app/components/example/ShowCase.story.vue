@@ -22,7 +22,7 @@ const submit = ($event: string) => hstEvent('Submitted', $event)
 </script>
 
 <template>
-  <Story title="The Component">
+  <Story title="Show case of supported features">
     <Variant title="No Placeholder">
       <ShowCase v-model="placeHolderEmpty.modelValue" :placeholder="placeHolderEmpty.placeholder" @submit="submit" />
     </Variant>

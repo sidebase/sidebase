@@ -19,7 +19,7 @@ const value = ref<string>(props.modelValue)
 </script>
 
 <template>
-  <div class="m-1">
+  <div class="p-1">
     <h1>Form:</h1>
     <p>An ant design form that emits a submit on click to the button. Note that we use is via an "auto-import", we did not need to perform a manual import in the scripts section.</p>
     <form @submit.prevent="$emit('submit', value)">
@@ -40,7 +40,7 @@ const value = ref<string>(props.modelValue)
     <div class="mt-2">
       <h1>Icon:</h1>
       <p>This is a svg-icon that was imported and turned into a pseudo-component, that we can style just like any other element.</p>
-      <CloseIcon class="w-8" />
+      <CloseIcon class="w-24 fill-blue-200" />
     </div>
   </div>
 </template>
