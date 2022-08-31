@@ -1,9 +1,18 @@
-import matchers from '@testing-library/jest-dom/matchers'
 import { afterAll, afterEach, expect, vi } from 'vitest'
 import { cleanup } from '@testing-library/vue'
+import type {
+  TestingLibraryMatchers,
+} from '@testing-library/jest-dom/matchers'
+import matchers from '@testing-library/jest-dom/matchers'
 
-// Followed https://markus.oberlehner.net/blog/using-testing-library-jest-dom-with-vitest/ to setup https://github.com/testing-library/jest-dom to
-// have things like `toHaveValue`
+// Add `jest-dom` style matchers for testing and fix their typing
+declare global {
+  namespace Vi {
+    interface JestAssertion<T = any>
+      extends jest.Matchers<void, T>,
+      TestingLibraryMatchers<T, void> {}
+  }
+}
 expect.extend(matchers)
 
 // Ensure that console.warn and console.error have not been called
@@ -25,4 +34,19 @@ afterAll(() => {
 // but does not seem to work with vitest
 afterEach(() => {
   cleanup()
+})
+
+// Mock `matchMedia` to be defined in fake js-dom
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation(query => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(), // deprecated
+    removeListener: vi.fn(), // deprecated
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
 })

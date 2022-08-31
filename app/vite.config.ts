@@ -65,9 +65,9 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       enabled: true,
-      lines: 85,
-      functions: 85,
-      branches: 85,
+      lines: 90,
+      functions: 90,
+      branches: 90,
       // We want to catch all js/ts/... files, not only the ones imported in some tests
       // see https://github.com/bcoe/c8#checking-for-full-source-coverage-using---all
       all: true,
@@ -83,7 +83,7 @@ export default defineConfig({
         'server',
         'app.vue',
       ],
-      exclude: ['**/*.story.vue', '**/*.test.ts', 'app.vue'],
+      exclude: ['**/*.story.vue', '**/*.test.ts', 'app.vue', 'pages/**/*.vue'],
     },
     deps: {
       // `ant-design-vue` breaks vitest unless we inline it here,

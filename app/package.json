@@ -10,7 +10,7 @@
     "start": "node .output/server/index.mjs",
     "lint": "npm-run-all lint:*",
     "lint:types": "nuxi typecheck",
-    "lint:style": "npm-run-all postinstall && eslint .",
+    "lint:style": "eslint .",
     "test": "npm-run-all postinstall && vitest --run",
     "test:watch": "npm-run-all postinstall && vitest",
     "prepare": "cd .. && husky install",
@@ -20,7 +20,6 @@
     "story:preview": "histoire preview"
   },
   "dependencies": {
-    "pg": "^8.7.3",
     "sqlite3": "^5.0.11",
     "typeorm": "^0.3.7",
     "zod": "^3.18.0"

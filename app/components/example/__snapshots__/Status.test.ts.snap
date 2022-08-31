@@ -1,0 +1,45 @@
+// Vitest Snapshot v1
+
+exports[`Status > mounts and is still the same for fail variant 1`] = `
+"<div>
+  <p class=\\"font-bold\\"> An error occured. Health status could not be requested. </p>
+</div>"
+`;
+
+exports[`Status > mounts and is still the same for success variant 1`] = `
+"<div>
+  <div>
+    <p>Live backend service status is:</p>
+    <div class=\\"ant-divider ant-divider-horizontal\\" role=\\"separator\\">
+      <!---->
+    </div>
+    <div class=\\"ant-list ant-list-split\\">
+      <!---->
+      <!---->
+      <div class=\\"ant-spin-nested-loading\\">
+        <!---->
+        <div class=\\"ant-spin-container\\">
+          <li class=\\"ant-list-item\\">Status: healthy
+            <!---->
+            <!---->
+          </li>
+          <li class=\\"ant-list-item\\">Time: Tue Feb 01 2000 14:00:00 GMT+0100 (Central European Standard Time)
+            <!---->
+            <!---->
+          </li>
+          <li class=\\"ant-list-item\\">Startup Time: Tue Feb 01 2000 13:00:00 GMT+0100 (Central European Standard Time)
+            <!---->
+            <!---->
+          </li>
+          <li class=\\"ant-list-item\\">Version: v0.0.1
+            <!---->
+            <!---->
+          </li>
+        </div>
+      </div>
+      <!---->
+      <!---->
+    </div>
+  </div>
+</div>"
+`;
