@@ -32,4 +32,5 @@ export default defineNuxtConfig({
     },
     transpile,
   },
+  modules: ['nuxt-svgo'],
 })

@@ -1,9 +1,6 @@
-/// <reference types="@histoire/plugin-vue/components" />
-import path from 'path'
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
-import svgLoader from 'vite-svg-loader'
 import Vue from '@vitejs/plugin-vue'
 import AutoImport from 'unplugin-auto-import/vite'
 
@@ -27,11 +24,6 @@ pluginVue.apply = (_, { mode }: { mode: string }) => {
 const include = [/\.vue$/, /\.vue\?vue/, /\.stories\.ts$/, /\.[tj]s$/]
 
 export default defineConfig({
-  resolve: {
-    alias: {
-      '~': path.resolve(__dirname),
-    },
-  },
   plugins: [
     // Make composable, components and ant-design imports work inside `vitest`, `storybook`
     pluginVue,
@@ -47,7 +39,6 @@ export default defineConfig({
       dirs: ['composables'],
       vueTemplate: true,
     }),
-    svgLoader(),
   ],
   // @ts-expect-error: Missing ssr key
   // Make `ant-design-vue` work as at the moment there's

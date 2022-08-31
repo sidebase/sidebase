@@ -16,7 +16,6 @@ const props = defineProps({
 defineEmits<{
   (e: 'submit', value: string): void
 }>()
-
 const value = ref<string>(props.modelValue)
 </script>
 
