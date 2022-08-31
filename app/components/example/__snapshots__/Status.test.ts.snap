@@ -23,11 +23,11 @@ exports[`Status > mounts and is still the same for success variant 1`] = `
             <!---->
             <!---->
           </li>
-          <li class=\\"ant-list-item\\">Time: Tue Feb 01 2000 14:00:00 GMT+0100 (Central European Standard Time)
+          <li class=\\"ant-list-item\\">Time: Tue Feb 01 2000 14:00:00 GMT+0000 (Coordinated Universal Time)
             <!---->
             <!---->
           </li>
-          <li class=\\"ant-list-item\\">Startup Time: Tue Feb 01 2000 13:00:00 GMT+0100 (Central European Standard Time)
+          <li class=\\"ant-list-item\\">Startup Time: Tue Feb 01 2000 13:00:00 GMT+0000 (Coordinated Universal Time)
             <!---->
             <!---->
           </li>
