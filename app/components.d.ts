@@ -12,13 +12,6 @@ declare module '@vue/runtime-core' {
     AInput: typeof import('ant-design-vue/es')['Input']
     AList: typeof import('ant-design-vue/es')['List']
     AListItem: typeof import('ant-design-vue/es')['ListItem']
-    ARate: typeof import('ant-design-vue/es')['Rate']
-    ExampleShowCase: typeof import('./components/example/ShowCase.vue')['default']
-    'ExampleShowCase.story': typeof import('./components/example/ShowCase.story.vue')['default']
-    ExampleStatus: typeof import('./components/example/Status.vue')['default']
-    'ExampleStatus.story': typeof import('./components/example/Status.story.vue')['default']
-    ExampleTheComponent: typeof import('./components/example/TheComponent.vue')['default']
-    'ExampleTheComponent.story': typeof import('./components/example/TheComponent.story.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }

@@ -59,6 +59,9 @@ jspm_packages/
 # Nuxt generate
 dist
 
+# Histoire output
+.histoire
+
 # vuepress build output
 .vuepress/dist
 

@@ -2,29 +2,29 @@
 import CloseIcon from '~/assets/icons/close.svg'
 
 const props = defineProps({
-  modelValue: {
+  nameInitialValue: {
     type: String,
     required: true,
   },
-  placeholder: {
+  namePlaceholder: {
     type: String,
     default: 'Your name...',
   },
 })
 
-defineEmits<{
-  (e: 'submit', value: string): void
+const emits = defineEmits<{
+  (e: 'submit', value: { name: string }): void
 }>()
-const value = ref<string>(props.modelValue)
+const name = ref<string>(props.nameInitialValue)
 </script>
 
 <template>
   <div class="p-1">
     <h1>Form:</h1>
     <p>An ant design form that emits a submit on click to the button. Note that we use is via an "auto-import", we did not need to perform a manual import in the scripts section.</p>
-    <form @submit.prevent="$emit('submit', value)">
+    <form @submit.prevent="emits('submit', { name })">
       <div class="flex">
-        <a-input v-model:value="value" :placeholder="placeholder" addon-before="Please enter your name:" />
+        <a-input v-model:value="name" :placeholder="namePlaceholder" addon-before="Please enter your name:" />
         <a-button html-type="submit" type="primary">
           Submit
         </a-button>

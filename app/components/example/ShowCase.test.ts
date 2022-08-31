@@ -4,20 +4,20 @@ import { fireEvent, render } from '~/tests/testingLibraryVue'
 
 describe('ShowCase', () => {
   test('mounts and is still the same', () => {
-    const { html } = render(ShowCase, { props: { modelValue: '' } })
+    const { html } = render(ShowCase, { props: { nameInitialValue: 'Udo' } })
     expect(html()).toMatchSnapshot()
   })
 
   test('gets its starting input value from a prop', async () => {
-    const modelValue = 'SIDESTREAM'
-    const { getByPlaceholderText } = render(ShowCase, { props: { modelValue } })
+    const nameInitialValue = 'SIDESTREAM'
+    const { getByPlaceholderText } = render(ShowCase, { props: { nameInitialValue } })
 
     const nameInput = getByPlaceholderText('Your name...')
-    expect(nameInput).toHaveValue(modelValue)
+    expect(nameInput).toHaveValue(nameInitialValue)
   })
 
   test('emits changed values on button click', async () => {
-    const { emitted, getByPlaceholderText, getByText } = render(ShowCase, { props: { modelValue: '' } })
+    const { emitted, getByPlaceholderText, getByText } = render(ShowCase, { props: { nameInitialValue: '' } })
 
     // Enter text
     const name = 'Peter'
@@ -31,6 +31,6 @@ describe('ShowCase', () => {
     // Check outcome
     const emits = emitted()
     expect(emits).toHaveProperty('submit')
-    expect(emits.submit).toMatchObject([[name]])
+    expect(emits.submit).toMatchObject([[{ name }]])
   })
 })
