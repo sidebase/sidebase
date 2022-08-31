@@ -12,7 +12,7 @@ The application code is inside the `app/` folder. Read more [in it's README](./a
 - breakpoint debugging
 - `Base` database model that can be usefully extended by project typeorm-classes
 - VS Code plugin recommendations for the best development experience (DX)
-
+- Make sure to configure your editor and environment as described here: https://v3.nuxtjs.org/getting-started/quick-start/
 
 ## Development
 
