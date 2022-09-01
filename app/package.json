@@ -1,13 +1,13 @@
 {
   "private": true,
   "engines": {
-    "node": "16.14.2",
-    "npm": "8.5.0"
+    "node": ">=16.14.2",
+    "npm": ">=8.5.0"
   },
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
-    "start": "node .output/server/index.mjs",
+    "start": "NODE_ENV=production node .output/server/index.mjs",
     "lint": "npm-run-all lint:*",
     "lint:types": "nuxi typecheck",
     "lint:style": "eslint .",
