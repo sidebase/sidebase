@@ -19,7 +19,7 @@ const name = ref<string>(props.nameInitialValue)
 </script>
 
 <template>
-  <div class="p-1 bg-white">
+  <div class="p-1">
     <h1>Form:</h1>
     <p>An ant design form that emits a submit on click to the button. Note that we use is via an "auto-import", we did not need to perform a manual import in the scripts section.</p>
     <form @submit.prevent="emits('submit', { name })">

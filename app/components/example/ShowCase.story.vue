@@ -26,13 +26,13 @@ const submit = (formData: Object) => {
 <template>
   <Story title="Show case of supported features">
     <Variant title="No Placeholder">
-      <ShowCase :name-initial-value="placeHolderEmpty.nameInitialValue" :placeholder="placeHolderEmpty.placeholder" @submit="submit" />
+      <ShowCase class="bg-white" :name-initial-value="placeHolderEmpty.nameInitialValue" :placeholder="placeHolderEmpty.placeholder" @submit="submit" />
     </Variant>
     <Variant title="With Placeholder">
-      <ShowCase :name-initial-value="withPlaceholder.nameInitialValue" :placeholder="withPlaceholder.placeholder" @submit="submit" />
+      <ShowCase class="bg-white" :name-initial-value="withPlaceholder.nameInitialValue" :placeholder="withPlaceholder.placeholder" @submit="submit" />
     </Variant>
     <Variant title="Prefilled">
-      <ShowCase :name-initial-value="prefilled.nameInitialValue" :placeholder="prefilled.placeholder" @submit="submit" />
+      <ShowCase class="bg-white" :name-initial-value="prefilled.nameInitialValue" :placeholder="prefilled.placeholder" @submit="submit" />
     </Variant>
   </Story>
 </template>

@@ -16,7 +16,7 @@ const statusCheckResult = computed(() => {
 
 let refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
-  refreshDataInterval = setInterval(refresh, 2000)
+  refreshDataInterval = setInterval(refresh, 5000)
 })
 
 onBeforeMount(() => {
@@ -34,8 +34,10 @@ const ratingValue = ref(5)
       <h1 class="text-xl">
         Welcome to the SideBase Nuxt 3 Fullstack Scaffold.
       </h1>
-      <p>We rate this scaffold with:</p>
-      <a-rate v-model:value="ratingValue" class="mx-auto my-8" />
+      <div class="my-16">
+        <p>We rate this scaffold with:</p>
+        <a-rate v-model:value="ratingValue" />
+      </div>
       <example-status
         :status-check="statusCheckResult"
       />
