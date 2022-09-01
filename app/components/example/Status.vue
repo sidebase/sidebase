@@ -11,7 +11,7 @@ defineProps({
 </script>
 
 <template>
-  <div>
+  <div class="bg-white">
     <div v-if="!statusCheck.error">
       <p>Live backend service status is:</p>
       <a-divider />

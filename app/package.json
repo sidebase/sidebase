@@ -1,8 +1,8 @@
 {
   "private": true,
   "engines": {
-    "node": "16.14.2",
-    "npm": "8.5.0"
+    "node": ">=16.14.2",
+    "npm": ">=8.5.0"
   },
   "scripts": {
     "dev": "nuxi dev",
@@ -15,7 +15,7 @@
     "test:watch": "npm-run-all postinstall && TZ=UTC vitest",
     "prepare": "cd .. && husky install",
     "postinstall": "nuxi prepare",
-    "story:dev": "histoire dev",
+    "story": "histoire dev",
     "story:build": "histoire build",
     "story:preview": "histoire preview"
   },
