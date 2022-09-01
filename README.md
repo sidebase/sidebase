@@ -32,7 +32,7 @@ The key features are:
     - Data base models, migrations and queries via [`TypeORM`](https://typeorm.io/),
     - Data-validation via [`zod`](https://github.com/colinhacks/zod),
     - Linting via [`eslint`](https://eslint.org/),
-    - Testing and component snapshotting via [`vitest`](https://vitest.dev/),
+    - Testing, Test UI, component snapshotting via [`vitest`](https://vitest.dev/),
     - API tests via [`supertest`](https://github.com/visionmedia/supertest),
     - Code coverage via [`c8`](https://github.com/bcoe/c8),
     - Component stories via [`histoire`](https://histoire.dev/),
@@ -55,6 +55,7 @@ You can also:
 - `npm run test` for testing (see [`ShowCase.test.ts`](./app/components/example/ShowCase.test.ts) as example)
     - `npm run test -- -u` to update the component snapshots
     - `npm run test -- -t "test describe text"` to run a specific test
+    - `npm run test:ui` to start the [vitest UI](https://vitest.dev/guide/ui.html)
 - `npm run lint` for linting using `eslint`
 - `npm run build` for bundling using `vite`
 
