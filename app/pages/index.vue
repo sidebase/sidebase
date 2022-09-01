@@ -35,7 +35,7 @@ const ratingValue = ref(5)
         Welcome to <a href="https://github.com/sidestream-tech/sidebase" target="_blank">SideBase</a>!
       </h1>
       <p>We rate this scaffold with:</p>
-      <a-rate v-model:value="ratingValue" class="mx-auto my-8" />
+      <a-rate v-model:value="ratingValue" />
       <example-status
         class="mt-5"
         :status-check="statusCheckResult"
