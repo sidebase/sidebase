@@ -3,11 +3,10 @@
 This is a project starter for your Nuxt 3 + Typescript application. This starter is meant to help you to start new projects, Nuxt 3 is a frontend + backend ("fullstack") framework that natively enforces typed JavaScript ("TypeScript"). Nuxt 3 is based on Vue 3.
 
 This starter has the following features:
-- (slim) docker ready
+- slim docker ready
     ```sh
     > docker build -t nuxt3-app .
-    > docker run -p 3000:3000 --rm nuxt3-app
-    # visit `localhost:3000`
+    > docker run -p 3000:3000 --init --rm nuxt3-app
     ```
 - Component stories via `Histoire`:
     ```sh

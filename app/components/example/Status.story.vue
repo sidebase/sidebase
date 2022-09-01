@@ -22,10 +22,10 @@ const statusCheckSuccess: StatusCheckResult = {
 <template>
   <Story title="Status">
     <Variant title="Check failed">
-      <Status :status-check="statusCheckFail" />
+      <Status class="bg-white" :status-check="statusCheckFail" />
     </Variant>
     <Variant title="Check success">
-      <Status :status-check="statusCheckSuccess" />
+      <Status class="bg-white" :status-check="statusCheckSuccess" />
     </Variant>
   </Story>
 </template>

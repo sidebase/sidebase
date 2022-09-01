@@ -16,7 +16,7 @@ const statusCheckResult = computed(() => {
 
 let refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
-  refreshDataInterval = setInterval(refresh, 2000)
+  refreshDataInterval = setInterval(refresh, 5000)
 })
 
 onBeforeMount(() => {
