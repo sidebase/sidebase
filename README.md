@@ -10,7 +10,7 @@ sidebase is a modern, best-practice, batteries-included fullstack-app starter ba
 
 1. Clone the repository
     ```sh
-    git clone https://github.com/BracketJohn/sidebase my-app
+    git clone https://github.com/sidestream-tech/sidebase my-app
     ```
 2. Go into the `app/` directory
     ```sh
