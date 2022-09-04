@@ -1,18 +1,17 @@
-# Nuxt 3 TypeScript Scaffold
+# App
 
-This is a project scaffold for a Nuxt 3 + Typescript application. Scaffolds are meant to help us to start new projects, Nuxt 3 is a frontend + backend ("fullstack") framework that natively enforces typed JavaScript ("TypeScript"). Nuxt 3 is based on Vue 3.
+This is a project starter for your Nuxt 3 + Typescript application. This starter is meant to help you to start new projects, Nuxt 3 is a frontend + backend ("fullstack") framework that natively enforces typed JavaScript ("TypeScript"). Nuxt 3 is based on Vue 3.
 
-This scaffold has the following features:
-- (slim) docker ready
+This starter has the following features:
+- slim docker ready
     ```sh
     > docker build -t nuxt3-app .
-    > docker run -p 3000:3000 --rm nuxt3-app
-    # visit `localhost:3000`
+    > docker run -p 3000:3000 --init --rm nuxt3-app
     ```
-- Storybook support:
+- Component stories via `Histoire`:
     ```sh
     > npm i
-    > npm run storybook
+    > npm run story
     ```
 - Linting & Formatting (`npm run lint`)
     - `npm run lint:style`: eslint for formatting & linting
@@ -30,8 +29,8 @@ This scaffold has the following features:
     - Components: Ant Design Vue with component-auto-import
 - Miscallaneous
     - Pre-commit checking (husky) & fixing (lint-staged)
-    - drone CI pipeline to linting, testing, typing checks
-    - nuxt-link support in tests and storybook
+    - github CI pipeline to linting, testing, typing checks
+    - nuxt-component support in tests and histoire
     - debug sql database queries by setting `logging: true` in the `database/index.ts`: This will show you a live log of all ongoing database queries which is super helpful to debug database problems
 
 ## Local Setup
@@ -43,8 +42,8 @@ If this is not the first time you use `npm` / `node` v16 on your setup:
 # development mode with hot reloading
 > npm run dev
 
-# component based development via storybook
-> npm run storybook
+# component based development via histoire
+> npm run story
 
 # testing via vitest
 > npm run test

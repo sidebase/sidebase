@@ -1,26 +1,26 @@
 import { describe, expect, test } from 'vitest'
-import TheComponent from './TheComponent.vue'
+import ShowCase from './ShowCase.vue'
 import { fireEvent, render } from '~/tests/testingLibraryVue'
 
-describe('TheComponent', () => {
+describe('ShowCase', () => {
   test('mounts and is still the same', () => {
-    const { html } = render(TheComponent, { props: { modelValue: '' } })
+    const { html } = render(ShowCase, { props: { nameInitialValue: 'Udo' } })
     expect(html()).toMatchSnapshot()
   })
 
   test('gets its starting input value from a prop', async () => {
-    const modelValue = 'SIDESTREAM'
-    const { getByPlaceholderText } = render(TheComponent, { props: { modelValue } })
+    const nameInitialValue = 'SIDESTREAM'
+    const { getByPlaceholderText } = render(ShowCase, { props: { nameInitialValue } })
 
     const nameInput = getByPlaceholderText('Your name...')
-    expect(nameInput).toHaveValue(modelValue)
+    expect(nameInput).toHaveValue(nameInitialValue)
   })
 
   test('emits changed values on button click', async () => {
-    const { emitted, getByPlaceholderText, getByText } = render(TheComponent, { props: { modelValue: '' } })
+    const { emitted, getByPlaceholderText, getByText } = render(ShowCase, { props: { nameInitialValue: '' } })
 
     // Enter text
-    const name = 'Nils'
+    const name = 'Peter'
     const nameInput = getByPlaceholderText('Your name...')
     await fireEvent.update(nameInput, name)
 

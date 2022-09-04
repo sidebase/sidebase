@@ -1,3 +1,4 @@
+/// <reference types="@histoire/plugin-vue/components" />
 import path from 'path'
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
@@ -35,26 +36,25 @@ export default defineConfig({
     // Make composable, components and ant-design imports work inside `vitest`, `storybook`
     pluginVue,
     Components({
-      dirs: ['components'],
+      dirs: ['~/components'],
       directoryAsNamespace: true,
       resolvers: [AntDesignVueResolver()],
       include,
     }),
     AutoImport({
       include,
-      imports: [],
-      dirs: ['composables'],
+      imports: ['vue', 'vue-router'],
+      dirs: ['~/composables'],
       vueTemplate: true,
     }),
     svgLoader(),
   ],
-  // @ts-expect-error: Missing ssr key
-  // Make `ant-design-vue` work as at the moment there's
-  // still problems with Vite SSR + ant design,
+  // Make `ant-design-vue` work as at the moment there's still problems with Vite SSR + ant design,
   // see [this for source of fix](https://github.com/vueComponent/ant-design-vue/discussions/5210)
   // and [reported but unresolved here](https://github.com/vueComponent/ant-design-vue/issues/3997).
+  // For latest occurence + resolution see here: https://github.com/nuxt/framework/issues/6941#issuecomment-1229739856
   ssr: {
-    noExternal: ['moment', 'compute-scroll-into-view', 'ant-design-vue', '@ant-design/icons-vue'],
+    noExternal: ['moment', 'compute-scroll-into-view', 'ant-design-vue', '@ant-design/icons-vue', 'dayjs'],
   },
   // vitest configuration
   // see https://vitest.dev/config/
@@ -63,9 +63,9 @@ export default defineConfig({
     environment: 'jsdom',
     coverage: {
       enabled: true,
-      lines: 85,
-      functions: 85,
-      branches: 85,
+      lines: 90,
+      functions: 90,
+      branches: 90,
       // We want to catch all js/ts/... files, not only the ones imported in some tests
       // see https://github.com/bcoe/c8#checking-for-full-source-coverage-using---all
       all: true,
@@ -81,7 +81,7 @@ export default defineConfig({
         'server',
         'app.vue',
       ],
-      exclude: ['**/*.stories.ts', '**/*.test.ts', 'app.vue'],
+      exclude: ['**/*.story.vue', '**/*.test.ts', 'app.vue', 'pages/**/*.vue'],
     },
     deps: {
       // `ant-design-vue` breaks vitest unless we inline it here,
