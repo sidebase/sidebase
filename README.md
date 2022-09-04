@@ -29,11 +29,12 @@ sidebase is a modern, best-practice, batteries-included fullstack-app starter ba
 
 The key features are:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
-    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 RC.9`](v3.nuxtjs.org/),
+    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 RC.9`](https://v3.nuxtjs.org/),
     - Data base models, migrations and queries via [`TypeORM`](https://typeorm.io/),
     - Data-validation via [`zod`](https://github.com/colinhacks/zod),
     - Linting via [`eslint`](https://eslint.org/),
-    - Testing, Test UI, component snapshotting via [`vitest`](https://vitest.dev/),
+    - Test management, Test UI, component snapshotting via [`vitest`](https://vitest.dev/),
+    - Component tests via [`test-library/vue`](https://testing-library.com/),
     - API tests via [`supertest`](https://github.com/visionmedia/supertest),
     - Code coverage via [`c8`](https://github.com/bcoe/c8),
     - Component stories via [`histoire`](https://histoire.dev/),
