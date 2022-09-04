@@ -11,7 +11,7 @@ This starter has the following features:
 - Component stories via `Histoire`:
     ```sh
     > npm i
-    > npm run story:dev
+    > npm run story
     ```
 - Linting & Formatting (`npm run lint`)
     - `npm run lint:style`: eslint for formatting & linting
@@ -43,7 +43,7 @@ If this is not the first time you use `npm` / `node` v16 on your setup:
 > npm run dev
 
 # component based development via histoire
-> npm run story:dev
+> npm run story
 
 # testing via vitest
 > npm run test
