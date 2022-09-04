@@ -8,9 +8,17 @@ const statusCheckResult = computed(() => {
     }
   }
 
+  const responseData = data.value
+  if (!responseData) {
+    return {
+      error: new Error('No data where data was expected'),
+      result: null,
+    }
+  }
+
   return {
     error: null,
-    result: data.value,
+    result: responseData,
   }
 })
 
