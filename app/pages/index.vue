@@ -40,7 +40,7 @@ const ratingValue = ref(5)
   <div class="h-screen flex items-center justify-center">
     <div class="w-96 flex flex-col">
       <h1 class="text-xl">
-        Welcome to <a href="https://github.com/sidestream-tech/sidebase" target="_blank">SideBase</a>!
+        Welcome to <a href="https://github.com/sidestream-tech/sidebase" target="_blank">sidebase</a>!
       </h1>
       <p>We rate this scaffold with:</p>
       <a-rate v-model:value="ratingValue" />

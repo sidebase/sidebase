@@ -1,11 +1,11 @@
 name: "\U0001F41E Bug report"
-description: Create a report to help us improve Sidebase
+description: Create a report to help us improve sidebase
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Please help us finding and resolving problems in Sidebase.
+        Please help us finding and resolving problems in sidebase.
 
   - type: textarea
     id: bug-env
