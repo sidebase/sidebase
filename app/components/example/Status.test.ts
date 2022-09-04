@@ -33,9 +33,10 @@ describe('Status', () => {
 
     // Ensure all expected text is there:
     getByText('Live backend service status is:')
-    getByText('Status: healthy')
-    getByText(`Time: ${fakeStatusCheckSuccess.result.time}`)
-    getByText(`Startup Time: ${fakeStatusCheckSuccess.result.startupTime}`)
-    getByText(`Version: ${fakeStatusCheckSuccess.result.nuxtAppVersion}`)
+    getByText('Status')
+    getByText('healthy')
+    getByText(`${fakeStatusCheckSuccess.result.time}`)
+    getByText(`${fakeStatusCheckSuccess.result.startupTime}`)
+    getByText(`${fakeStatusCheckSuccess.result.nuxtAppVersion}`)
   })
 })

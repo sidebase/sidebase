@@ -13,16 +13,32 @@ defineProps({
 <template>
   <div>
     <div v-if="!statusCheck.error">
-      <p>Live backend service status is:</p>
-      <a-divider />
-      <a-list>
-        <a-list-item>Status: {{ statusCheck.result.status }}</a-list-item>
-        <a-list-item>Time: {{ statusCheck.result.time }}</a-list-item>
-        <a-list-item>Startup Time: {{ statusCheck.result.startupTime }}</a-list-item>
-        <a-list-item>Version: {{ statusCheck.result.nuxtAppVersion }}</a-list-item>
-      </a-list>
+      <div>
+        Live backend service status is:
+      </div>
+      <table class="table-fixed w-full">
+        <tbody>
+          <tr>
+            <td class="w-1/3">
+              Status
+            </td>
+            <td>{{ statusCheck.result.status }}</td>
+          </tr>
+          <tr>
+            <td>Server time</td>
+            <td>{{ statusCheck.result.time }}</td>
+          </tr>
+          <tr>
+            <td>Startup Time</td>
+            <td>{{ statusCheck.result.startupTime }}</td>
+          </tr>
+          <tr>
+            <td>App version</td>
+            <td>{{ statusCheck.result.nuxtAppVersion }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-
     <p v-else class="font-bold">
       An error occured. Health status could not be requested.
     </p>
