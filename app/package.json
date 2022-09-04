@@ -26,7 +26,7 @@
     "zod": "^3.18.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config-vue": "^0.26.2",
+    "@antfu/eslint-config-vue": "^0.26.3",
     "@babel/core": "^7.18.2",
     "@faker-js/faker": "^7.5.0",
     "@histoire/plugin-nuxt": "^0.10.7",
@@ -40,7 +40,7 @@
     "@vitejs/plugin-vue": "^3.0.3",
     "@vitest/coverage-c8": "^0.22.1",
     "@vitest/ui": "^0.22.1",
-    "ant-design-vue": "^3.2.11",
+    "ant-design-vue": "^3.2.12",
     "babel-loader": "^8.2.4",
     "eslint": "^8.23.0",
     "eslint-plugin-vue": "^9.4.0",
@@ -54,11 +54,11 @@
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.4",
     "vite-plugin-eslint": "^1.8.1",
-    "vite-svg-loader": "^3.5.0",
+    "vite-svg-loader": "^3.5.1",
     "vitest": "^0.22.1",
     "vue": "^3.2.38",
     "vue-loader": "^17.0.0",
-    "vue-tsc": "^0.40.5"
+    "vue-tsc": "^0.40.6"
   },
   "lint-staged": {
     "*{.js,.ts,.vue}": "eslint --fix ."
