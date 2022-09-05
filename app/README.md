@@ -8,6 +8,7 @@ This starter has the following features:
     > docker build -t nuxt3-app .
     > docker run -p 3000:3000 --init --rm nuxt3-app
     ```
+    - Note: Docker is not required for development or deployment - for development `sqlite3` is used and will launch automatically via `npm run dev` 🚀
 - Component stories via `Histoire`:
     ```sh
     > npm i
