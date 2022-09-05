@@ -32,7 +32,7 @@ const name = ref<string>(props.nameInitialValue)
     </form>
     <div class="mt-2">
       <h1>Nuxt link:</h1>
-      <p>This is a nuxt-link, a nuxt native component that we can easily use in histoire. To do so, we mocked it inside the `preview.js` - mock more nuxt native elements there if needed.</p>
+      <p>This is a nuxt-link, a nuxt native component that we can easily use in histoire.</p>
       <nuxt-link to="/">
         Example link to somewhere
       </nuxt-link>
