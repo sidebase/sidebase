@@ -25,11 +25,6 @@ sidebase is a modern, best-practice, batteries-included fullstack-app starter ba
     npm run dev
     ```
 
-Have fun, as [Atinux, CEO of Nuxt](https://github.com/Atinux) said:
-
-![atinux testamonial twitter](./.github/atinux_testamonial.png)
-
-
 ## Features
 
 The key features are:
@@ -52,6 +47,9 @@ The key features are:
 - 😊 **Easy to use**: Designed to follow best practices and to be ready-to-go for development, without additional dev-dependencies like `docker` that make it hard to get started
 - 🚀 **Ready for launch**: Github Actions CI, Dockerfile, easy switch to most popular SQL-databases are all there, out of the box ([get in touch if you're missing something](https://github.com/sidestream-tech/sidebase/issues/new/choose))
 
+**Have fun**, as [Atinux, CEO of Nuxt](https://github.com/Atinux) said:
+> Beautiful work on Sidebase!
+
 To facilitate this `sidebase` bootstraps a nuxt 3 project that permits developing a backend and a frontend using just Nuxt 3 with overarching TypeScript support. We want to show the world how enjoyable end-to-end typescript programming can be, displacing the myth that JS/TS-backends are no good. This starter solves a lot fo the "real-world" problems that occur after you start using Nuxt or any other framework: How to write backend tests? How to write component tests? How to calculate test coverage? How to integrate a database? How to build a docker image? ...?
 
 If you have any problems with this project (e.g., setting it up on your PC) [open an issue](https://github.com/sidestream-tech/sidebase/issues/new/choose) and we'll figure it out together with you 🎉
@@ -69,37 +67,74 @@ You can also:
 
 Have a look at the more detailed [readme of the fullstack app](./app/README.md) to see a broader, more in-depth explanation and documentation of commands.
 
-### Highlights
+### Guides
 
-1. Use the [`nuxt-sidestream-parse` package](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) to make the frontend talk to the backend like a charm:
-    - Define an endpoint that returns complex data (e.g.: date-objects):
+1. Use [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) to validate and deserialize data from the `server` in the `frontend`:
+    - Define a zod-schema for the response of your endpoint, [like so](./app/server/schemas/healthz.ts):
         ```ts
-        // file: ~/server/api/test.get.ts
-        import { createError, defineEventHandler } from 'h3'
         import { z } from '@sidestream-tech/nuxt-sidebase-parse'
+        import { transformStringToDate } from './helpers'
 
-        export const responseSchema = z.object({
-            fixedString: z.literal('healthy'),
-            aDate: z.date(),
+        export const responseSchemaHealthCheck = z.object({
+        status: z.literal('healthy'),
+        time: z.string().transform(transformStringToDate),
+        startupTime: z.string().transform(transformStringToDate),
+        nuxtAppVersion: z.string(),
         })
 
-        export type ResponseSchema = z.infer<typeof responseSchema>
+        export type ResponseHealthcheck = z.infer<typeof responseSchemaHealthCheck>
 
-        export default defineEventHandler((): ResponseSchema => {
+        ```
+    - Define an endpoint that returns complex data (e.g.: date-objects), [like so](./app/server/api/healthz.get.ts):
+        ```ts
+        import { createError, defineEventHandler } from 'h3'
+        import { AppDataSource } from '../database'
+        import type { ResponseHealthcheck } from '../schemas/healthz'
+
+        const startupTime = new Date()
+
+        export default defineEventHandler((): ResponseHealthcheck => {
+        if (!AppDataSource.isInitialized) {
+            console.error('Healthcheck failed: DB connection not initialized')
+            throw createError({ statusCode: 500 })
+        }
+
+        return {
+            status: 'healthy',
+            time: new Date(),
+            startupTime,
+            nuxtAppVersion: process.env.NUXT_APP_VERSION || 'unknown',
+        }
+        })
+        ```
+    - Call it from the frontend, get free data validation, derserialization (e.g.: string-date is transformed to `Date` object) and typing, [like so](./app/pages/index.vue):
+        ```ts
+        import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
+        import { responseSchemaHealthCheck } from '~/server/schemas/healthz'
+
+        const transform = makeParser(responseSchemaHealthCheck)
+        const { data, refresh, error } = await useFetch('/api/healthz', { transform })
+        ```
+    - That's it! `data` will be fully typed AND all data inside will be de-serialized, so `time` will be a `Date`-object, and not a string, that you first need to deserialize
+    - If an `error` is thrown, it's done using nuxt [`createError`](https://v3.nuxtjs.org/api/utils/create-error/), so it works well in frontend and on the server. `data` will be null in that case. You can find zod-details about your error in `error.data`
+2. Use [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) to validate data that the user has passed to your API endpoint:
+    - Parse user data like this:
+        ```ts
+        import { defineEventHandler } from 'h3'
+        import type { CompatibilityEvent } from 'h3'
+        import { parseBodyAs, z } from '@sidestream-tech/nuxt-sidebase-parse'
+
+        export default defineEventHandler(async (event: CompatibilityEvent) => {
+            // Parse the payload using the update schema. The parsing is important to avoid bad, incorrect or malicious data coming in
+            const payload = await parseBodyAs(event, z.object({
+                requestId: z.string().uuid(),
+                pleaseDoubleThisNumber: z.number()
+            }))
+
             return {
-                fixedString: 'healthy',
-                aDate: new Date()
+                requestId: payload.requestId,
+                doubledNumber: 2 * payload.pleaseDoubleThisNumber
             }
         })
         ```
-    - Call it from the frontend:
-        ```ts
-        import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
-        import { responseSchema } from '~/server/api/test.get'
-
-        // Hover over data, you will see it strongly types, even the date-strings have been deserialized into `Date` objects (:
-        const transform = makeParser(responseSchema)
-        const { data } = await useFetch('/api/healthz', { transform })
-        ```
-    - That's it! `data` will be fully typed AND all data inside will be de-serialized, so `aDate` will be a `Date`-object, and not a string, that you first need to deserialize!
-    - Checkout [the example endpoint for a more complex example](./app/server/api/healthz.get.ts)
+    - Other helpers like `parseQueryAs`, `parseCookiesAs`, `parseParamsAs`, ... are defined in `@sidestream-tech/nuxt-sidebase-parse`. See a bigger [example here](./app/server/api/example/%5Bid%5D.patch.ts)
