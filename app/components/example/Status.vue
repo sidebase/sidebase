@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { ResponseHealthcheck } from '~/server/api/healthz.get'
+import type { ResponseHealthcheck } from '~/server/schemas/healthz'
 
 defineProps({
   statusCheck: {

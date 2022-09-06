@@ -1,14 +1,13 @@
 <script setup lang="ts">
 import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
-import { responseSchemaHealthCheck } from '~/server/api/healthz.get'
+import { responseSchemaHealthCheck } from '~/server/schemas/healthz'
 
-// Hover over data, you will see it strongly types, even the date-strings have been deserialized into `Date` objects (:
 const transform = makeParser(responseSchemaHealthCheck)
-const { data: statusCheckResult, refresh } = await useFetch('/api/healthz', { transform })
+const { data: statusCheck, refresh } = await useFetch('/api/healthz', { transform })
 
 let refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
-  refreshDataInterval = setInterval(refresh, 5000)
+  refreshDataInterval = setInterval(refresh, 2000)
 })
 
 onBeforeMount(() => {
@@ -30,7 +29,7 @@ const ratingValue = ref(5)
       <a-rate v-model:value="ratingValue" />
       <example-status
         class="mt-5"
-        :status-check="statusCheckResult"
+        :status-check="statusCheck"
       />
     </div>
   </div>
