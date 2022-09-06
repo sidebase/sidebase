@@ -72,14 +72,14 @@ Have a look at the more detailed [readme of the fullstack app](./app/README.md) 
 1. Use [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) to validate and deserialize data from the `server` in the `frontend`:
     - Define a zod-schema for the response of your endpoint, [like so](./app/server/schemas/healthz.ts):
         ```ts
+        // file: ~/server/schemas/healthz.ts
         import { z } from '@sidestream-tech/nuxt-sidebase-parse'
         import { transformStringToDate } from './helpers'
 
         export const responseSchemaHealthCheck = z.object({
-        status: z.literal('healthy'),
-        time: z.string().transform(transformStringToDate),
-        startupTime: z.string().transform(transformStringToDate),
-        nuxtAppVersion: z.string(),
+            status: z.literal('healthy'),
+            time: z.string().transform(transformStringToDate),
+            nuxtAppVersion: z.string(),
         })
 
         export type ResponseHealthcheck = z.infer<typeof responseSchemaHealthCheck>
@@ -87,28 +87,22 @@ Have a look at the more detailed [readme of the fullstack app](./app/README.md) 
         ```
     - Define an endpoint that returns complex data (e.g.: date-objects), [like so](./app/server/api/healthz.get.ts):
         ```ts
-        import { createError, defineEventHandler } from 'h3'
-        import { AppDataSource } from '../database'
-        import type { ResponseHealthcheck } from '../schemas/healthz'
+        // file: ~/server/api/healthz.get.ts
+        import { defineEventHandler } from 'h3'
+        import type { ResponseHealthcheck } from '~/server/schemas/healthz'
 
         const startupTime = new Date()
-
         export default defineEventHandler((): ResponseHealthcheck => {
-        if (!AppDataSource.isInitialized) {
-            console.error('Healthcheck failed: DB connection not initialized')
-            throw createError({ statusCode: 500 })
-        }
-
-        return {
-            status: 'healthy',
-            time: new Date(),
-            startupTime,
-            nuxtAppVersion: process.env.NUXT_APP_VERSION || 'unknown',
-        }
+            return {
+                status: 'healthy',
+                time: new Date(),
+                nuxtAppVersion: process.env.NUXT_APP_VERSION || 'unknown',
+            }
         })
         ```
     - Call it from the frontend, get free data validation, derserialization (e.g.: string-date is transformed to `Date` object) and typing, [like so](./app/pages/index.vue):
         ```ts
+        // file: ~/pages/index.vue
         import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
         import { responseSchemaHealthCheck } from '~/server/schemas/healthz'
 
