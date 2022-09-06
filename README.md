@@ -25,13 +25,18 @@ sidebase is a modern, best-practice, batteries-included fullstack-app starter ba
     npm run dev
     ```
 
+Have fun, as [Atinux, CEO of Nuxt](https://github.com/Atinux) said:
+
+![atinux testamonial twitter](./.github/atinux_testamonial.png)
+
+
 ## Features
 
 The key features are:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
     - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 RC.9`](https://v3.nuxtjs.org/),
     - Data base models, migrations, queries and easy DB-switching via [`TypeORM`](https://typeorm.io/),
-    - Data-validation via [`zod`](https://github.com/colinhacks/zod),
+    - Frontend- and Backend data-transformation via [`nuxt-sidebase-parse`](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) and [`zod`](https://github.com/colinhacks/zod),
     - In-memory development SQL-database via [`sqlite3`](https://www.sqlite.org/index.html),
     - Linting via [`eslint`](https://eslint.org/),
     - Test management, Test UI, component snapshotting via [`vitest`](https://vitest.dev/),
@@ -63,3 +68,38 @@ You can also:
 - `npm run build` for bundling using `vite`
 
 Have a look at the more detailed [readme of the fullstack app](./app/README.md) to see a broader, more in-depth explanation and documentation of commands.
+
+### Highlights
+
+1. Use the [`nuxt-sidestream-parse` package](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) to make the frontend talk to the backend like a charm:
+    - Define an endpoint that returns complex data (e.g.: date-objects):
+        ```ts
+        // file: ~/server/api/test.get.ts
+        import { createError, defineEventHandler } from 'h3'
+        import { z } from '@sidestream-tech/nuxt-sidebase-parse'
+
+        export const responseSchema = z.object({
+            fixedString: z.literal('healthy'),
+            aDate: z.date(),
+        })
+
+        export type ResponseSchema = z.infer<typeof responseSchema>
+
+        export default defineEventHandler((): ResponseSchema => {
+            return {
+                fixedString: 'healthy',
+                aDate: new Date()
+            }
+        })
+        ```
+    - Call it from the frontend:
+        ```ts
+        import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
+        import { responseSchema } from '~/server/api/test.get'
+
+        // Hover over data, you will see it strongly types, even the date-strings have been deserialized into `Date` objects (:
+        const transform = makeParser(responseSchema)
+        const { data } = await useFetch('/api/healthz', { transform })
+        ```
+    - That's it! `data` will be fully typed AND all data inside will be de-serialized, so `aDate` will be a `Date`-object, and not a string, that you first need to deserialize!
+    - Checkout [the example endpoint for a more complex example](./app/server/api/healthz.get.ts)
