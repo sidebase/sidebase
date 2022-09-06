@@ -3,7 +3,7 @@ import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
 import { responseSchemaHealthCheck } from '~/server/schemas/healthz'
 
 const transform = makeParser(responseSchemaHealthCheck)
-const { data, refresh } = await useFetch('/api/healthz', { transform })
+const { data: statusCheck, refresh } = await useFetch('/api/healthz', { transform })
 
 let refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {
@@ -29,7 +29,7 @@ const ratingValue = ref(5)
       <a-rate v-model:value="ratingValue" />
       <example-status
         class="mt-5"
-        :status-check="data"
+        :status-check="statusCheck"
       />
     </div>
   </div>
