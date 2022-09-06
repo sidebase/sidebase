@@ -1,7 +1,7 @@
 import { describe, expect, test } from 'vitest'
 import Status from './Status.vue'
 import { render } from '~/tests/testingLibraryVue'
-import type { ResponseHealthcheck } from '~/server/api/healthz.get'
+import type { ResponseHealthcheck } from '~/server/schemas/healthz'
 
 const fakeStatusCheckSuccess: ResponseHealthcheck = {
   status: 'healthy',

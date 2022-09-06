@@ -1,16 +1,8 @@
 import { createError, defineEventHandler } from 'h3'
-import { z } from '@sidestream-tech/nuxt-sidebase-parse'
 import { AppDataSource } from '../database'
+import type { ResponseHealthcheck } from '../schemas/healthz'
 
 const startupTime = new Date()
-export const responseSchemaHealthCheck = z.object({
-  status: z.literal('healthy'),
-  time: z.date(),
-  startupTime: z.date(),
-  nuxtAppVersion: z.string(),
-})
-
-export type ResponseHealthcheck = z.infer<typeof responseSchemaHealthCheck>
 
 export default defineEventHandler((): ResponseHealthcheck => {
   if (!AppDataSource.isInitialized) {
