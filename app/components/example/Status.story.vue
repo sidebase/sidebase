@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { faker } from '@faker-js/faker'
 import Status from './Status.vue'
-import type { ResponseHealthcheck } from '~/server/api/healthz.get'
+import type { ResponseHealthcheck } from '~/server/schemas/healthz'
 
 const statusCheckSuccess: ResponseHealthcheck = {
   status: 'healthy',
