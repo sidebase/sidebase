@@ -4,6 +4,7 @@ import type { ResponseHealthcheck } from '~/server/api/healthz.get'
 
 defineProps({
   statusCheck: {
+    // Sadly the only way to get nullable & required props, see https://github.com/vuejs/core/issues/3948#issuecomment-860466204
     type: null as unknown as PropType<ResponseHealthcheck | null>,
     required: true,
   },
