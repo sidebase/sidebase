@@ -1,26 +1,10 @@
 <script setup lang="ts">
-const { data, refresh, error } = await useFetch('/api/healthz')
-const statusCheckResult = computed(() => {
-  if (error.value) {
-    return {
-      error: error.value,
-      result: null,
-    }
-  }
+import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
+import { responseSchemaHealthCheck } from '~/server/api/healthz.get'
 
-  const responseData = data.value
-  if (!responseData) {
-    return {
-      error: new Error('No data where data was expected'),
-      result: null,
-    }
-  }
-
-  return {
-    error: null,
-    result: responseData,
-  }
-})
+// Hover over data, you will see it strongly types, even the date-strings have been deserialized into `Date` objects (:
+const transform = makeParser(responseSchemaHealthCheck)
+const { data: statusCheckResult, refresh } = await useFetch('/api/healthz', { transform })
 
 let refreshDataInterval: null | ReturnType<typeof setInterval> = null
 onMounted(() => {

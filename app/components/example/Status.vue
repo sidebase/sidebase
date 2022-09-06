@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { PropType } from 'vue'
-import type { StatusCheckResult } from '~/types'
+import type { ResponseHealthcheck } from '~/server/api/healthz.get'
 
 defineProps({
   statusCheck: {
-    type: Object as PropType<StatusCheckResult>,
+    type: null as unknown as PropType<ResponseHealthcheck | null>,
     required: true,
   },
 })
@@ -12,7 +12,7 @@ defineProps({
 
 <template>
   <div>
-    <div v-if="!statusCheck.error">
+    <div v-if="statusCheck">
       <div>
         Live backend service status is:
       </div>
@@ -22,19 +22,19 @@ defineProps({
             <td class="w-1/3">
               Status
             </td>
-            <td>{{ statusCheck.result.status }}</td>
+            <td>{{ statusCheck.status }}</td>
           </tr>
           <tr>
             <td>Server time</td>
-            <td>{{ statusCheck.result.time }}</td>
+            <td>{{ statusCheck.time }}</td>
           </tr>
           <tr>
             <td>Startup Time</td>
-            <td>{{ statusCheck.result.startupTime }}</td>
+            <td>{{ statusCheck.startupTime }}</td>
           </tr>
           <tr>
             <td>App version</td>
-            <td>{{ statusCheck.result.nuxtAppVersion }}</td>
+            <td>{{ statusCheck.nuxtAppVersion }}</td>
           </tr>
         </tbody>
       </table>

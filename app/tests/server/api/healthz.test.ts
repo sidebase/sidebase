@@ -3,7 +3,7 @@ import type { SuperTest, Test } from 'supertest'
 import dayjs from 'dayjs'
 import type { PathMethodHandler } from '../../utils'
 import { setupApiAndDatabase } from '../../utils'
-import handlerHealthzGet from '~/server/api/healthz.get'
+import handlerHealthzGet, { responseSchemaHealthCheck } from '~/server/api/healthz.get'
 import { AppDataSource } from '~/server/database'
 import { consoleSpyError } from '~/tests/setupTestUtils'
 
@@ -49,5 +49,25 @@ describe(`GET ${endpointBasePath}`, () => {
     consoleSpyError.mockClear()
 
     vi.restoreAllMocks()
+  })
+
+  it('s schema should work for validating data', async () => {
+    const resultCorrect = responseSchemaHealthCheck.safeParse({
+      status: 'healthy',
+      time: new Date(),
+      startupTime: new Date(),
+      nuxtAppVersion: 'unknown',
+    })
+
+    expect(resultCorrect.success).toBe(true)
+
+    const resultIncorrect = responseSchemaHealthCheck.safeParse({
+      status: 'healthyy',
+      time: new Date(),
+      startupTime: new Date(),
+      nuxtAppVersion: 'unknown',
+    })
+
+    expect(resultIncorrect.success).toBe(false)
   })
 })

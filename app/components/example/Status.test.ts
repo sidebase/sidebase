@@ -1,25 +1,18 @@
 import { describe, expect, test } from 'vitest'
 import Status from './Status.vue'
 import { render } from '~/tests/testingLibraryVue'
-import type { StatusCheckFail, StatusCheckSuccess } from '~/types'
+import type { ResponseHealthcheck } from '~/server/api/healthz.get'
 
-const fakeStatusCheckSuccess: StatusCheckSuccess = {
-  error: null,
-  result: {
-    status: 'healthy',
-    startupTime: new Date(2000, 1, 1, 13),
-    time: new Date(2000, 1, 1, 14),
-    nuxtAppVersion: 'v0.0.1',
-  },
+const fakeStatusCheckSuccess: ResponseHealthcheck = {
+  status: 'healthy',
+  startupTime: new Date(2000, 1, 1, 13),
+  time: new Date(2000, 1, 1, 14),
+  nuxtAppVersion: 'v0.0.1',
 }
 
 describe('Status', () => {
   test('mounts and is still the same for fail variant', () => {
-    const statusCheck: StatusCheckFail = {
-      error: true,
-      result: null,
-    }
-    const { html } = render(Status, { props: { statusCheck } })
+    const { html } = render(Status, { props: { statusCheck: null } })
     expect(html()).toMatchSnapshot()
   })
 
@@ -35,8 +28,8 @@ describe('Status', () => {
     getByText('Live backend service status is:')
     getByText('Status')
     getByText('healthy')
-    getByText(`${fakeStatusCheckSuccess.result.time}`)
-    getByText(`${fakeStatusCheckSuccess.result.startupTime}`)
-    getByText(`${fakeStatusCheckSuccess.result.nuxtAppVersion}`)
+    getByText(`${fakeStatusCheckSuccess.time}`)
+    getByText(`${fakeStatusCheckSuccess.startupTime}`)
+    getByText(`${fakeStatusCheckSuccess.nuxtAppVersion}`)
   })
 })
