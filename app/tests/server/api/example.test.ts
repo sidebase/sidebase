@@ -78,7 +78,7 @@ describe.each(idBasedEndpoints)(`$method ${endpointBasePath}/:id check 404 and 4
       },
       stack: [],
       statusCode: 422,
-      statusMessage: 'Data validation failed',
+      statusMessage: 'Parameter parsing failed',
     })
   })
 })

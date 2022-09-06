@@ -81,7 +81,7 @@ export default defineConfig({
         'server',
         'app.vue',
       ],
-      exclude: ['**/*.story.vue', '**/*.test.ts', 'app.vue', 'pages/**/*.vue'],
+      exclude: ['**/*.story.vue', '**/*.test.ts', 'app.vue', 'pages/**/*.vue', 'server/database/index.ts'],
     },
     deps: {
       // `ant-design-vue` breaks vitest unless we inline it here,

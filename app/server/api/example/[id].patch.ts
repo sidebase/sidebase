@@ -1,8 +1,7 @@
 import { defineEventHandler } from 'h3'
 import type { CompatibilityEvent } from 'h3'
-import { z } from 'zod'
+import { parseBodyAs, parseDataAs, parseParamsAs, z } from '@sidestream-tech/nuxt-sidebase-parse'
 import { Example, exampleFull, exampleUpdate } from '~/server/database/entities/Example'
-import { parseBodyAs, parseDataAs, parseParamsAs } from '~/server/helpers'
 
 const paramsSchema = z.object({
   id: z.string().uuid(),
@@ -10,7 +9,7 @@ const paramsSchema = z.object({
 
 export default defineEventHandler(async (event: CompatibilityEvent) => {
   // Parse the request parameters (so the dynamic data that is part of the URL, e.g.: `/example/1` where `1` is the id)
-  const params = await parseParamsAs(event, paramsSchema)
+  const params = parseParamsAs(event, paramsSchema)
 
   // Find the requested entity to then later update it. This method will correctly throw a `404` HTTP error if no entity is found
   const exampleToUpdate = await Example.findOneOrThrow({ where: { id: params.id } })
