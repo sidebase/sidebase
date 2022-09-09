@@ -10,7 +10,7 @@ onMounted(() => {
   refreshDataInterval = setInterval(refresh, 2000)
 })
 
-onBeforeMount(() => {
+onBeforeUnmount(() => {
   if (refreshDataInterval) {
     clearInterval(refreshDataInterval)
   }
