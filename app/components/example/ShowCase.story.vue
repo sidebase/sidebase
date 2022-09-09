@@ -5,17 +5,17 @@ import ShowCase from './ShowCase.vue'
 
 const placeHolderEmpty = {
   nameInitialValue: '',
-  placeholder: undefined,
+  namePlaceholder: undefined,
 }
 
 const withPlaceholder = {
   nameInitialValue: '',
-  placeholder: 'Enter your name...',
+  namePlaceholder: 'Enter your name...',
 }
 
 const prefilled = {
   nameInitialValue: faker.name.firstName(),
-  placeholder: '',
+  namePlaceholder: '',
 }
 
 const submit = (formData: Object) => {
@@ -26,13 +26,13 @@ const submit = (formData: Object) => {
 <template>
   <Story title="Show case of supported features">
     <Variant title="No Placeholder">
-      <ShowCase class="bg-white" :name-initial-value="placeHolderEmpty.nameInitialValue" :placeholder="placeHolderEmpty.placeholder" @submit="submit" />
+      <ShowCase class="bg-white" :name-initial-value="placeHolderEmpty.nameInitialValue" :name-placeholder="placeHolderEmpty.namePlaceholder" @submit="submit" />
     </Variant>
     <Variant title="With Placeholder">
-      <ShowCase class="bg-white" :name-initial-value="withPlaceholder.nameInitialValue" :placeholder="withPlaceholder.placeholder" @submit="submit" />
+      <ShowCase class="bg-white" :name-initial-value="withPlaceholder.nameInitialValue" :name-placeholder="withPlaceholder.namePlaceholder" @submit="submit" />
     </Variant>
     <Variant title="Prefilled">
-      <ShowCase class="bg-white" :name-initial-value="prefilled.nameInitialValue" :placeholder="prefilled.placeholder" @submit="submit" />
+      <ShowCase class="bg-white" :name-initial-value="prefilled.nameInitialValue" :name-placeholder="prefilled.namePlaceholder" @submit="submit" />
     </Variant>
   </Story>
 </template>
