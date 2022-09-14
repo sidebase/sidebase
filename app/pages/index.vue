@@ -20,8 +20,8 @@ const ratingValue = ref(5)
 </script>
 
 <template>
-  <div class="h-screen flex items-center justify-center">
-    <div class="w-96 flex flex-col">
+  <div class="flex h-screen items-center justify-center">
+    <div class="flex w-96 flex-col">
       <h1 class="text-xl">
         Welcome to <a href="https://github.com/sidestream-tech/sidebase" target="_blank">sidebase</a>!
       </h1>
