@@ -10,7 +10,7 @@ exports[`Status > mounts and is still the same for success variant 1`] = `
 "<div>
   <div>
     <div> Live backend service status is: </div>
-    <table class=\\"table-fixed w-full\\">
+    <table class=\\"w-full table-fixed\\">
       <tbody>
         <tr>
           <td class=\\"w-1/3\\"> Status </td>
