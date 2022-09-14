@@ -43,7 +43,7 @@ export default defineConfig({
     }),
     AutoImport({
       include,
-      imports: ['vue', 'vue-router'],
+      imports: ['vue'],
       dirs: ['~/composables'],
       vueTemplate: true,
     }),

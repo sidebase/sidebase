@@ -76,3 +76,7 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Auto generate on postinstall step
+auto-imports.d.ts
+components.d.ts
