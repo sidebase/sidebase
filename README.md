@@ -2,7 +2,7 @@
 
 # sidebase
 
-> With **sidebase** every new project feel like a fun side-project while scaling to production.
+> With **sidebase** every new project feels like a fun side-project while scaling to production.
 
 sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript.
 
