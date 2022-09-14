@@ -1,5 +1,6 @@
 {
-    "extends": "@antfu/vue",
+    "plugins": ["tailwindcss"],
+    "extends": ["@antfu/vue", "plugin:tailwindcss/recommended"],
     "overrides": [
         {
             "files": [
@@ -21,6 +22,13 @@
             "error",
             "1tbs"
         ],
-        "no-unused-vars": "error"
+        "no-unused-vars": "error",
+        "tailwindcss/classnames-order": "error",
+        "tailwindcss/enforces-negative-arbitrary-values": "warn",
+        "tailwindcss/enforces-shorthand": "error",
+        "tailwindcss/migration-from-tailwind-2": "warn",
+        "tailwindcss/no-arbitrary-value": "off",
+        "tailwindcss/no-custom-classname": "off",
+        "tailwindcss/no-contradicting-classname": "error"
     }
 }
