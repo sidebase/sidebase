@@ -1,10 +1,16 @@
-![sidebase](./.github/sidebase.png)
+![sidebase-logo-light](.github/sidebase_logo_light.svg)
 
 # sidebase
 
-> With **sidebase** every new project feels like a fun side-project while scaling to production.
+ <a href="https://github.com/sidestream-tech/sidebase/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/nuxt/framework/workflows/ci/badge.svg?branch=main&event=push" alt="CI Status"></a>
+[![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
+[![GitHub stars](https://badgen.net/github/stars/sidestream-tech/sidebase)](https://GitHub.com/sidestream-tech/sidebase/)
+
 
 sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript.
+
+With this nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase mon Twitter:
+> Beautiful work on Sidebase!
 
 ## Quick start
 
@@ -25,11 +31,14 @@ sidebase is a modern, best-practice, batteries-included fullstack-app starter ba
     npm run dev
     ```
 
+You now see an app that has a running backend, frontend and database. The data you see is queried from the backend:
+![sidebase](./.github/sidebase.png)
+
 ## Features
 
 The key features are:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
-    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 RC.9`](https://v3.nuxtjs.org/),
+    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 RC.10`](https://v3.nuxtjs.org/),
     - Data base models, migrations, queries and easy DB-switching via [`TypeORM`](https://typeorm.io/),
     - Frontend- and Backend data-transformation via [`nuxt-sidebase-parse`](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) and [`zod`](https://github.com/colinhacks/zod),
     - In-memory development SQL-database via [`sqlite3`](https://www.sqlite.org/index.html),
@@ -46,9 +55,6 @@ The key features are:
 - 🐛 **Fewer bugs**: Strong data-validation using `zod` to validate all transferred data, fully typed API-routes, strict DB models via `TypeORM`
 - 😊 **Easy to use**: Designed to follow best practices and to be ready-to-go for development, without additional dev-dependencies like `docker` that make it hard to get started
 - 🚀 **Ready for launch**: Github Actions CI, Dockerfile, easy switch to most popular SQL-databases are all there, out of the box ([get in touch if you're missing something](https://github.com/sidestream-tech/sidebase/issues/new/choose))
-
-**Have fun**, as [Atinux, CEO of Nuxt](https://github.com/Atinux) said:
-> Beautiful work on Sidebase!
 
 To facilitate this `sidebase` bootstraps a nuxt 3 project that permits developing a backend and a frontend using just Nuxt 3 with overarching TypeScript support. We want to show the world how enjoyable end-to-end typescript programming can be, displacing the myth that JS/TS-backends are no good. This starter solves a lot fo the "real-world" problems that occur after you start using Nuxt or any other framework: How to write backend tests? How to write component tests? How to calculate test coverage? How to integrate a database? How to build a docker image? ...?
 
@@ -217,3 +223,8 @@ If none of this works, file an issue (preferrably with a reproduction) [here](ht
         })
         ```
     - Other helpers like `parseQueryAs`, `parseCookiesAs`, `parseParamsAs`, ... are defined in `@sidestream-tech/nuxt-sidebase-parse`. See a bigger [example here](./app/server/api/example/%5Bid%5D.patch.ts)
+
+
+## License
+
+[MIT](./LICENSE)
