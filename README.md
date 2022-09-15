@@ -62,6 +62,7 @@ This is the documentation section of sidebase. It contains useful commands and g
 
 Useful Commands for development, testing and deployment:
 - Develop & Debug the app:
+    - `npm i`: Install required dependencies
     - `npm run dev`: Start the fullstack app, including database
     - `npm run story`: Start `histoire` for component story based development of UI
 - Linting & Formatting (`npm run lint`)
@@ -95,6 +96,7 @@ Useful Commands for development, testing and deployment:
     ```
     - Note: Docker is not required for development or deployment - for development `sqlite3` is used and will launch automatically via `npm run dev` 🚀
 - Miscallaneous
+    - `nvm use`: If you use `nvm`, use this command to make sure that your local environment uses the correct, required node version
     - Pre-commit checking (husky) & fixing (lint-staged)
     - github CI pipeline to linting, testing, typing checks
     - nuxt-component support in tests and histoire

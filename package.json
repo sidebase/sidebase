@@ -17,14 +17,12 @@
     "prepare": "cd .. && husky install",
     "postinstall": "nuxi prepare",
     "story": "histoire dev",
-    "story:build": "histoire build",
-    "story:preview": "histoire preview"
+    "story:build": "histoire build"
   },
   "dependencies": {
     "@sidestream-tech/nuxt-sidebase-parse": "^0.2.6",
     "sqlite3": "^5.0.11",
-    "typeorm": "^0.3.9",
-    "zod": "^3.18.0"
+    "typeorm": "^0.3.9"
   },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.26.3",
