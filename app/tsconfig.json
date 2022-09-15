@@ -7,11 +7,6 @@
     "node_modules"
   ],
   "compilerOptions": {
-    // This is also part of volar#592, see above
-    "types": [
-      "vite/client",
-      "@types/testing-library__jest-dom"
-    ],
     // Preserve type checking in SFC templates, see https://github.com/johnsoncodehk/volar/issues/1219#issuecomment-1104548432
     "jsx": "preserve",
     // For TypeORM, see https://typeorm.io/#installation
