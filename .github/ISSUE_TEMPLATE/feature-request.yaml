@@ -1,6 +1,6 @@
-name: "🚀 Feature request"
+name: 🚀 Feature request
 description: Suggest a feature that will improve sidebase
-labels: ["enhancement"]
+labels: [enhancement]
 body:
   - type: markdown
     attributes:
