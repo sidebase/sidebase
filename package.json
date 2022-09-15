@@ -17,14 +17,12 @@
     "prepare": "cd .. && husky install",
     "postinstall": "nuxi prepare",
     "story": "histoire dev",
-    "story:build": "histoire build",
-    "story:preview": "histoire preview"
+    "story:build": "histoire build"
   },
   "dependencies": {
     "@sidestream-tech/nuxt-sidebase-parse": "^0.2.6",
     "sqlite3": "^5.0.11",
-    "typeorm": "^0.3.9",
-    "zod": "^3.18.0"
+    "typeorm": "^0.3.9"
   },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.26.3",
@@ -35,12 +33,13 @@
     "@nuxtjs/tailwindcss": "^5.3.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/vue": "^6.6.1",
+    "@types/node": "^18.7.18",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
     "@typescript-eslint/parser": "^5.36.1",
     "@vitejs/plugin-vue": "^3.0.3",
-    "@vitest/coverage-c8": "^0.22.1",
-    "@vitest/ui": "^0.22.1",
+    "@vitest/coverage-c8": "^0.23.2",
+    "@vitest/ui": "^0.23.2",
     "ant-design-vue": "^3.2.12",
     "babel-loader": "^8.2.4",
     "eslint": "^8.23.0",
@@ -50,13 +49,13 @@
     "jsdom": "^20.0.0",
     "lint-staged": "^13.0.1",
     "npm-run-all": "^4.1.5",
-    "nuxt": "^3.0.0-rc.9",
+    "nuxt": "^3.0.0-rc.10",
     "supertest": "^6.2.4",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.4",
     "vite-plugin-eslint": "^1.8.1",
     "vite-svg-loader": "^3.5.1",
-    "vitest": "^0.22.1",
+    "vitest": "^0.23.2",
     "vue": "^3.2.38",
     "vue-loader": "^17.0.0",
     "vue-tsc": "^0.40.9"

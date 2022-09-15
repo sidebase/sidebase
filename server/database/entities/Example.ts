@@ -1,5 +1,5 @@
 import { Column, Entity } from 'typeorm'
-import { z } from 'zod'
+import { z } from '@sidestream-tech/nuxt-sidebase-parse'
 import { Base } from './Base'
 
 @Entity()

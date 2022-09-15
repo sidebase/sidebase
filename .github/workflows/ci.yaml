@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
@@ -18,10 +18,9 @@ jobs:
         with:
           node-version: 16.14.2
       - run: npm ci
-        working-directory: ./app
+
       - run: npm run build
-        working-directory: ./app
+
       - run: npm run lint
-        working-directory: ./app
+
       - run: npm run test
-        working-directory: ./app
