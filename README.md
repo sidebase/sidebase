@@ -1,4 +1,5 @@
-![sidebase-logo-light](.github/sidebase_logo_light.svg)
+![sidebase-logo-for-dark](.github/sidebase_logo_dark_icon_font_for_dark_bg_long.svg#gh-dark-mode-only#gh-dark-mode-only)
+![sidebase-logo-for-light](.github/sidebase_logo_light_icon_font_white_bg_long.svg#gh-light-mode-only)
 
 # sidebase
 

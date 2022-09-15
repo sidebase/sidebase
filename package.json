@@ -14,7 +14,7 @@
     "test": "npm-run-all postinstall && TZ=UTC vitest --run",
     "test:watch": "npm-run-all postinstall && TZ=UTC vitest",
     "test:ui": "npm-run-all postinstall && TZ=UTC vitest --ui",
-    "prepare": "cd .. && husky install",
+    "prepare": "husky install",
     "postinstall": "nuxi prepare",
     "story": "histoire dev",
     "story:build": "histoire build"
