@@ -7,21 +7,22 @@
 [![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
 [![GitHub stars](https://badgen.net/github/stars/sidestream-tech/sidebase)](https://GitHub.com/sidestream-tech/sidebase/)
 
-
 sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript.
 
-With this nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase mon Twitter:
-> Beautiful work on Sidebase!
+With this nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase on Twitter:
+> Beautiful work on sidebase!
 
 ## Quick start
+
+![sidebase](./.github/sidebase.png)
 
 1. Clone the repository
     ```sh
     git clone https://github.com/sidestream-tech/sidebase my-app
     ```
-2. Go into the `app/` directory
+2. Go into the `my-app/` directory
     ```sh
-    cd my-app/app
+    cd my-app
     ```
 3. Install the dependencies
     ```sh
@@ -31,9 +32,6 @@ With this nuxt 3 starter you get production-ready frontend + backend projects wh
     ```sh
     npm run dev
     ```
-
-You now see an app that has a running backend, frontend and database. The data you see is queried from the backend:
-![sidebase](./.github/sidebase.png)
 
 ## Features
 

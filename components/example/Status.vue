@@ -20,18 +20,18 @@ defineProps({
       <table class="table-fixed w-full">
         <tbody>
           <tr>
-            <td class="w-1/3">
+            <td>
               Status
             </td>
             <td>{{ statusCheck.status }}</td>
           </tr>
           <tr>
             <td>Server time</td>
-            <td>{{ statusCheck.time }}</td>
+            <td>{{ statusCheck.time.toLocaleString() }}</td>
           </tr>
           <tr>
             <td>Startup Time</td>
-            <td>{{ statusCheck.startupTime }}</td>
+            <td>{{ statusCheck.startupTime.toLocaleString() }}</td>
           </tr>
           <tr>
             <td>App version</td>
