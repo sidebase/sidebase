@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
 import { responseSchemaHealthCheck } from '~/server/schemas/healthz'
+import SidebaseLogo from '~/assets/sidebase_logo_light_icon_font_white_bg_long.svg'
 
 const transform = makeParser(responseSchemaHealthCheck)
 const { data: statusCheck, refresh } = await useFetch('/api/healthz', { transform })
@@ -21,11 +22,13 @@ const ratingValue = ref(5)
 
 <template>
   <div class="h-screen flex items-center justify-center">
-    <div class="w-96 flex flex-col">
+    <div class="w-4/6 max-w-lg flex flex-col">
+      <SidebaseLogo class="w-72 fill-blue-200" />
       <h1 class="text-xl">
         Welcome to <a href="https://github.com/sidestream-tech/sidebase" target="_blank">sidebase</a>!
       </h1>
-      <p>We rate this scaffold with:</p>
+      <p>sidebase is a production ready, fullstack typescript nuxt 3 starter. It has a lot of batteries like testing, DB ORM, API examples, ... included. The data you see below is fetched from an API that is connected to a running database. DB, Frontend and Backend all start with a single command: <b>npm run dev</b></p>
+      <p>Make this starter your own - this page is just a boring placeholder. We rate this scaffold with:</p>
       <a-rate v-model:value="ratingValue" />
       <example-status
         class="mt-5"

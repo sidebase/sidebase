@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-full bg-green-300">
+  <div class="h-screen w-full bg-white">
     <Head>
       <Title>sidebase</Title>
     </Head>
