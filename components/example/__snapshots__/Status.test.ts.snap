@@ -13,16 +13,16 @@ exports[`Status > mounts and is still the same for success variant 1`] = `
     <table class=\\"table-fixed w-full\\">
       <tbody>
         <tr>
-          <td class=\\"w-1/3\\"> Status </td>
+          <td> Status </td>
           <td>healthy</td>
         </tr>
         <tr>
           <td>Server time</td>
-          <td>Tue Feb 01 2000 14:00:00 GMT+0000 (Coordinated Universal Time)</td>
+          <td>01/02/2000, 14:00:00</td>
         </tr>
         <tr>
           <td>Startup Time</td>
-          <td>Tue Feb 01 2000 13:00:00 GMT+0000 (Coordinated Universal Time)</td>
+          <td>01/02/2000, 13:00:00</td>
         </tr>
         <tr>
           <td>App version</td>
