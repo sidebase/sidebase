@@ -15,7 +15,7 @@ describe('Status', () => {
 
   test('mounts and is still the same for success variant', () => {
     const timeToUse = new Date(2000, 1, 1, 14)
-    const timeToUseAsFixedLocale = timeToUse.toLocaleString('UTC')
+    const timeToUseAsFixedLocale = timeToUse.toLocaleString('en-US')
     const fakeStatusCheckSuccess: ResponseHealthcheck = {
       status: 'healthy',
       startupTime: timeToUse,

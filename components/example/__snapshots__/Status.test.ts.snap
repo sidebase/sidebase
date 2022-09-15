@@ -18,11 +18,11 @@ exports[`Status > mounts and is still the same for success variant 1`] = `
         </tr>
         <tr>
           <td>Server time</td>
-          <td>01/02/2000, 14:00:00</td>
+          <td>2/1/2000, 2:00:00 PM</td>
         </tr>
         <tr>
           <td>Startup Time</td>
-          <td>01/02/2000, 14:00:00</td>
+          <td>2/1/2000, 2:00:00 PM</td>
         </tr>
         <tr>
           <td>App version</td>
