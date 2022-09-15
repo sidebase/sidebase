@@ -10,7 +10,7 @@
 
 sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript.
 
-With this nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase mon Twitter:
+With this nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase on Twitter:
 > Beautiful work on Sidebase!
 
 ## Quick start
