@@ -18,7 +18,7 @@ With this nuxt 3 starter you get production-ready frontend + backend projects wh
 
 1. Use the official [`nuxi`-cli](https://v3.nuxtjs.org/api/commands/init) to start:
     ```sh
-    npx nuxi@latest init -t community/nuxt-sidebase
+    npx nuxi@latest init -t community/sidebase
     ```
 2. Go into the `nuxt-sidebase/` directory
     ```sh
