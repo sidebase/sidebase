@@ -16,13 +16,13 @@ With this nuxt 3 starter you get production-ready frontend + backend projects wh
 
 ![sidebase](./.github/sidebase.png)
 
-1. Clone the repository
+1. Use the official [`nuxi`-cli](https://v3.nuxtjs.org/api/commands/init) to start:
     ```sh
-    git clone https://github.com/sidestream-tech/sidebase my-app
+    npx nuxi@latest init -t community/sidebase
     ```
-2. Go into the `my-app/` directory
+2. Go into the `nuxt-sidebase/` directory
     ```sh
-    cd my-app
+    cd nuxt-sidebase
     ```
 3. Install the dependencies
     ```sh
