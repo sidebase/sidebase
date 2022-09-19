@@ -17,7 +17,7 @@ defineProps({
       <div>
         Live backend service status is:
       </div>
-      <table class="table-fixed w-full">
+      <table class="w-full table-fixed">
         <tbody>
           <tr>
             <td>
