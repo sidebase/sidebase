@@ -22,5 +22,18 @@ export default defineNuxtConfig({
   build: {
     transpile,
   },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxtjs/tailwindcss',
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: [
+        // automatically imports `defineStore`
+          'defineStore', // import { defineStore } from 'pinia'
+          // automatically imports `defineStore` as `definePiniaStore`
+          ['defineStore', 'definePiniaStore'], // import { defineStore as definePiniaStore } from 'pinia'
+        ],
+      },
+    ],
+  ],
 })

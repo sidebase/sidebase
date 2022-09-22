@@ -20,6 +20,7 @@
     "story:build": "histoire build"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.4.2",
     "@sidestream-tech/nuxt-sidebase-parse": "^0.2.6",
     "sqlite3": "^5.1.1",
     "typeorm": "^0.3.9"
