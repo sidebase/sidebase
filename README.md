@@ -50,6 +50,7 @@ The key features are:
     - CSS utiltities via [`TailwindCSS`](https://tailwindcss.com/),
     - CSS components via [`Ant Design Vue`](https://antdv.com/components/overview),
     - Type checking in script and template via [`Volar / vue-tsc`](https://github.com/johnsoncodehk/volar)
+    - state management with [`Pinia`](https://pinia.vuejs.org/)
 - 🏎️ **Fast to code**: Database, example tests, example components and example pages are all there for you to fill out
 - 🐛 **Fewer bugs**: Strong data-validation using `zod` to validate all transferred data, fully typed API-routes, strict DB models via `TypeORM`
 - 😊 **Easy to use**: Designed to follow best practices and to be ready-to-go for development, without additional dev-dependencies like `docker` that make it hard to get started
