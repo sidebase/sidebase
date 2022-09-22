@@ -1,5 +1,6 @@
 /// <reference types="@histoire/plugin-vue/components" />
 import path from 'path'
+import fs from 'fs'
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
 import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
@@ -26,6 +27,15 @@ pluginVue.apply = (_, { mode }: { mode: string }) => {
 
 const include = [/\.vue$/, /\.vue\?vue/, /\.stories\.ts$/, /\.[tj]s$/]
 
+export const getFileNames = (dir: string) => fs.readdirSync(dir)
+  .map((file) => {
+    return file.split('.ts')[0]
+  })
+
+const STORE_PATH = './store'
+
+const storeFileNames = getFileNames(STORE_PATH)
+
 export default defineConfig({
   resolve: {
     alias: {
@@ -43,7 +53,20 @@ export default defineConfig({
     }),
     AutoImport({
       include,
-      imports: ['vue'],
+      imports: [
+        'vue',
+        {
+          ...Object.values(storeFileNames).reduce((acc, name) => {
+            const hookName = `use${name[0].toUpperCase()}${name.substring(1)}`
+            return {
+              ...acc,
+              [`@/store/${name}`]: [
+                [hookName, hookName],
+              ],
+            }
+          }, {}),
+        },
+      ],
       dirs: ['~/composables'],
       vueTemplate: true,
     }),

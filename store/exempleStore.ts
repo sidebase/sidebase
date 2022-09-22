@@ -1,4 +1,4 @@
-export const useCounterStore = defineStore('counter', {
+export const useExempleStore = defineStore('counter', {
   state: () => ({ count: 0, name: 'Eduardo' }),
   getters: {
     doubleCount: state => state.count * 2,
