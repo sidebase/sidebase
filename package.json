@@ -50,7 +50,7 @@
     "jsdom": "^20.0.0",
     "lint-staged": "^13.0.1",
     "npm-run-all": "^4.1.5",
-    "nuxt": "^3.0.0-rc.10",
+    "nuxt": "^3.0.0-rc.11",
     "supertest": "^6.2.4",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.4",
