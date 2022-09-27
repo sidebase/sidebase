@@ -1,0 +1,21 @@
+name: Deploy template
+
+on:
+  push:
+    branches:
+      - main
+      - 'starter/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: cat starter-exclude.txt | xargs rm
+
+      - run: rm starter-exclude.txt
+
+      - uses: EndBug/add-and-commit@v9
