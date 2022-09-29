@@ -8,8 +8,9 @@ const transform = makeParser(responseSchemaHealthCheck)
 const { data: statusCheck, refresh } = await useFetch('/api/healthz', { transform })
 
 let refreshDataInterval: null | ReturnType<typeof setInterval> = null
+const refreshIntervalMS = 2000
 onMounted(() => {
-  refreshDataInterval = setInterval(refresh, 2000)
+  refreshDataInterval = setInterval(refresh, refreshIntervalMS)
 })
 
 onBeforeUnmount(() => {
@@ -35,6 +36,7 @@ const ratingValue = ref(5)
       <example-status
         class="mt-5"
         :status-check="statusCheck"
+        :fetch-interval="refreshIntervalMS / 1000"
       />
     </div>
   </div>

@@ -2,7 +2,7 @@
 
 exports[`Status > mounts and is still the same for fail variant 1`] = `
 "<div>
-  <p class=\\"font-bold\\"> An error occured. Health status could not be requested. </p>
+  <p class=\\"font-bold\\"> An error occurred. Health status could not be requested. </p>
 </div>"
 `;
 
@@ -30,7 +30,7 @@ exports[`Status > mounts and is still the same for success variant 1`] = `
         </tr>
       </tbody>
     </table>
-    <div class=\\"mt-2 text-gray-400\\"> Data is fetched from the server every two seconds. </div>
+    <!--v-if-->
   </div>
 </div>"
 `;
