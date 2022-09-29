@@ -14,7 +14,8 @@ With this nuxt 3 starter you get production-ready frontend + backend projects wh
 
 ## Quick start
 
-![sidebase](./.github/sidebase-stars.png)
+![sidebase-preview-for-dark](.github/preview/dark_mode.png#gh-dark-mode-only#gh-dark-mode-only)
+![sidebase-preview-for-light](.github/preview/light_mode.png#gh-light-mode-only)
 
 1. Use the official [`nuxi`-cli](https://v3.nuxtjs.org/api/commands/init) to start:
     ```sh
