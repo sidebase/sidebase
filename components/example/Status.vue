@@ -39,6 +39,9 @@ defineProps({
           </tr>
         </tbody>
       </table>
+      <div class="mt-2 text-gray-400">
+        Data is fetched from the server every two seconds.
+      </div>
     </div>
     <p v-else class="font-bold">
       An error occured. Health status could not be requested.
