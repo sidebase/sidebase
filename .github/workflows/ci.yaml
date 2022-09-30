@@ -17,10 +17,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16.14.2
-      - run: npm ci
+      - run: npm i -g @antfu/ni
 
-      - run: npm run build
+      - run: ni
 
-      - run: npm run lint
+      - run: nr build
 
-      - run: npm run test
+      - run: nr lint
+
+      - run: nr test
