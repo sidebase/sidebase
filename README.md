@@ -5,6 +5,7 @@
 
  <a href="https://github.com/sidestream-tech/sidebase/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/nuxt/framework/workflows/ci/badge.svg?branch=main&event=push" alt="CI Status"></a>
 [![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
+[![Join our Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/9MUHR8WT9B)
 [![GitHub stars](https://badgen.net/github/stars/sidestream-tech/sidebase)](https://GitHub.com/sidestream-tech/sidebase/)
 
 sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript.
@@ -14,7 +15,8 @@ With this nuxt 3 starter you get production-ready frontend + backend projects wh
 
 ## Quick start
 
-![sidebase](./.github/sidebase-stars.png)
+![sidebase-preview-for-dark](.github/preview/dark_mode.png#gh-dark-mode-only#gh-dark-mode-only)
+![sidebase-preview-for-light](.github/preview/light_mode.png#gh-light-mode-only)
 
 1. Use the official [`nuxi`-cli](https://v3.nuxtjs.org/api/commands/init) to start:
     ```sh

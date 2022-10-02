@@ -29,7 +29,7 @@ describe(`GET ${endpointBasePath}`, () => {
     expect(response.body.status).toEqual('healthy')
     expect(dayjs(response.body.time).isValid()).toBe(true)
     expect(dayjs(response.body.startupTime).isValid()).toBe(true)
-    expect(response.body.nuxtAppVersion).toBe(process.env.NUXT_APP_VERSION || 'unknown')
+    expect(response.body.nuxtAppVersion).toBe(process.env.NUXT_APP_VERSION || process.env.npm_package_version || 'unknown')
   })
 
   it('should return 500 if database connection fails', async () => {
