@@ -14,6 +14,6 @@ export default defineEventHandler((): ResponseHealthcheck => {
     status: 'healthy',
     time: new Date(),
     startupTime,
-    nuxtAppVersion: process.env.NUXT_APP_VERSION || 'unknown',
+    nuxtAppVersion: process.env.NUXT_APP_VERSION || process.env.npm_package_version || 'unknown',
   }
 })

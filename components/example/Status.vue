@@ -8,6 +8,10 @@ defineProps({
     type: null as unknown as PropType<ResponseHealthcheck | null>,
     required: true,
   },
+  fetchInterval: {
+    type: Number,
+    default: undefined,
+  },
 })
 </script>
 
@@ -39,9 +43,12 @@ defineProps({
           </tr>
         </tbody>
       </table>
+      <div v-if="fetchInterval" class="mt-2 text-gray-400">
+        Data is fetched from the server every {{ fetchInterval }} seconds.
+      </div>
     </div>
     <p v-else class="font-bold">
-      An error occured. Health status could not be requested.
+      An error occurred. Health status could not be requested.
     </p>
   </div>
 </template>
