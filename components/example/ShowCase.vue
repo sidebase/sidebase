@@ -13,7 +13,7 @@ const props = defineProps({
 })
 
 const emits = defineEmits<{
-  (e: 'submit', value: { name: string }): void
+  (e: 'submit', value: { name: string }): undefined
 }>()
 const name = ref<string>(props.nameInitialValue)
 </script>
@@ -22,7 +22,7 @@ const name = ref<string>(props.nameInitialValue)
   <div class="p-1">
     <h1>Form:</h1>
     <p>An ant design form that emits a submit on click to the button. Note that we use is via an "auto-import", we did not need to perform a manual import in the scripts section.</p>
-    <form @submit.prevent="emits('submit', { name })">
+    <form @submit.prevent="() => emits('submit', { name })">
       <div class="flex">
         <a-input v-model:value="name" :placeholder="namePlaceholder" addon-before="Please enter your name:" />
         <a-button html-type="submit" type="primary">
