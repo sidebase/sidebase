@@ -5,10 +5,10 @@ import { Base } from './Base'
 @Entity()
 export class Example extends Base {
   @Column('text')
-    description!: string
+  description!: string
 
   @Column('text')
-    details!: string
+  details!: string
 }
 
 // Specify what fields can be updated and how these fields can be updated. This prevents from unwanted updates with malicious, bad, ... data

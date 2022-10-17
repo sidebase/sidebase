@@ -7,7 +7,7 @@ import { createError } from 'h3'
  */
 export abstract class Base extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
-    id!: string
+  id!: string
 
   /**
      * Updates entity-instance that match given options or throw a `404` error.
@@ -46,7 +46,7 @@ export abstract class Base extends BaseEntity {
      * ```
      */
   static async findOneOrThrow<T extends BaseEntity>(
-    this: { new (): T } & typeof BaseEntity,
+    this: { new(): T } & typeof BaseEntity,
     options: FindOneOptions<T> = {},
   ): Promise<T> {
     let result: T
@@ -73,7 +73,7 @@ export abstract class Base extends BaseEntity {
      * ```
      */
   static async findMany<T extends BaseEntity>(
-    this: { new (): T } & typeof BaseEntity,
+    this: { new(): T } & typeof BaseEntity,
     options: FindManyOptions<T> = {},
   ): Promise<T[]> {
     const result: T[] = await this.getRepository<T>().find(options)
