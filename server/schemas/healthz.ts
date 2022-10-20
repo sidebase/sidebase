@@ -1,4 +1,4 @@
-import { z } from '@sidestream-tech/nuxt-sidebase-parse'
+import { z } from '@sidebase/nuxt-parse'
 import { transformStringToDate } from './helpers'
 
 export const responseSchemaHealthCheck = z.object({

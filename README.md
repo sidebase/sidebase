@@ -41,7 +41,7 @@ The key features are:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
     - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 RC.10`](https://v3.nuxtjs.org/),
     - Data base models, migrations, queries and easy DB-switching via [`TypeORM`](https://typeorm.io/),
-    - Frontend- and Backend data-transformation via [`nuxt-sidebase-parse`](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) and [`zod`](https://github.com/colinhacks/zod),
+    - Frontend- and Backend data-transformation via [`nuxt-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) and [`zod`](https://github.com/colinhacks/zod),
     - In-memory development SQL-database via [`sqlite3`](https://www.sqlite.org/index.html),
     - Linting via [`eslint`](https://eslint.org/),
     - Test management, Test UI, component snapshotting via [`vitest`](https://vitest.dev/),
@@ -160,11 +160,11 @@ If none of this works, file an issue (preferrably with a reproduction) [here](ht
 
 #### `nuxt-sidestream-parse`
 
-1. [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) to validate and deserialize data from the `server` in the `frontend`:
+1. [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) to validate and deserialize data from the `server` in the `frontend`:
     - Define a zod-schema for the response of your endpoint, [like so](./app/server/schemas/healthz.ts):
         ```ts
         // file: ~/server/schemas/healthz.ts
-        import { z } from '@sidestream-tech/nuxt-sidebase-parse'
+        import { z } from '@sidebase/nuxt-parse'
         import { transformStringToDate } from './helpers'
 
         export const responseSchemaHealthCheck = z.object({
@@ -192,7 +192,7 @@ If none of this works, file an issue (preferrably with a reproduction) [here](ht
     - Call it from the frontend, get free data validation, derserialization (e.g.: string-date is transformed to `Date` object) and typing, [like so](./app/pages/index.vue):
         ```ts
         // file: ~/pages/index.vue
-        import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
+        import { makeParser } from '@sidebase/nuxt-parse'
         import { responseSchemaHealthCheck } from '~/server/schemas/healthz'
 
         const transform = makeParser(responseSchemaHealthCheck)
@@ -203,12 +203,12 @@ If none of this works, file an issue (preferrably with a reproduction) [here](ht
         ```
     - That's it! `data` will be fully typed AND all data inside will be de-serialized, so `time` will be a `Date`-object, and not a string, that you first need to deserialize
     - If an `error` is thrown, it's done using nuxt [`createError`](https://v3.nuxtjs.org/api/utils/create-error/), so it works well in frontend and on the server. `data` will be null in that case. You can find zod-details about your error in `error.data`
-2. Use [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidestream-tech/nuxt-sidebase-parse) to validate data that the user has passed to your API endpoint:
+2. Use [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) to validate data that the user has passed to your API endpoint:
     - Parse user data like this:
         ```ts
         import { defineEventHandler } from 'h3'
         import type { CompatibilityEvent } from 'h3'
-        import { parseBodyAs, z } from '@sidestream-tech/nuxt-sidebase-parse'
+        import { parseBodyAs, z } from '@sidebase/nuxt-parse'
 
         export default defineEventHandler(async (event: CompatibilityEvent) => {
           // Parse the payload using the update schema. The parsing is important to avoid bad, incorrect or malicious data coming in
@@ -223,7 +223,7 @@ If none of this works, file an issue (preferrably with a reproduction) [here](ht
           }
         })
         ```
-    - Other helpers like `parseQueryAs`, `parseCookiesAs`, `parseParamsAs`, ... are defined in `@sidestream-tech/nuxt-sidebase-parse`. See a bigger [example here](./app/server/api/example/%5Bid%5D.patch.ts)
+    - Other helpers like `parseQueryAs`, `parseCookiesAs`, `parseParamsAs`, ... are defined in `@sidebase/nuxt-parse`. See a bigger [example here](./app/server/api/example/%5Bid%5D.patch.ts)
 
 
 ## License

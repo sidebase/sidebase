@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { z } from '@sidestream-tech/nuxt-sidebase-parse'
+import { z } from '@sidebase/nuxt-parse'
 import { faker } from '@faker-js/faker'
 import { transformStringToDate } from '~/server/schemas/helpers'
 

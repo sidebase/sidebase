@@ -1,6 +1,6 @@
 import { defineEventHandler } from 'h3'
 import type { CompatibilityEvent } from 'h3'
-import { parseBodyAs, parseDataAs, parseParamsAs, z } from '@sidestream-tech/nuxt-sidebase-parse'
+import { parseBodyAs, parseDataAs, parseParamsAs, z } from '@sidebase/nuxt-parse'
 import { Example, exampleFull, exampleUpdate } from '~/server/database/entities/Example'
 
 const paramsSchema = z.object({

@@ -1,4 +1,4 @@
-import { z } from '@sidestream-tech/nuxt-sidebase-parse'
+import { z } from '@sidebase/nuxt-parse'
 
 export const transformStringToDate = (val: string, ctx: z.RefinementCtx) => {
   // Ensure that `val` is a string, as this transformer could be called with any data at runtime
