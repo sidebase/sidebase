@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { makeParser } from '@sidestream-tech/nuxt-sidebase-parse'
+import { makeParser } from '@sidebase/nuxt-parse'
 import { responseSchemaHealthCheck } from '~/server/schemas/healthz'
 import SidebaseLogoLight from '~/assets/sidebase_logo_light_icon_font_white_bg_long.svg'
 import SidebaseLogoDark from '~/assets/sidebase_logo_dark_icon_font_for_dark_bg_long.svg'
