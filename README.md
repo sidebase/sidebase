@@ -3,10 +3,12 @@
 
 # sidebase
 
- <a href="https://github.com/sidestream-tech/sidebase/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/nuxt/framework/workflows/ci/badge.svg?branch=main&event=push" alt="CI Status"></a>
+ <a href="https://github.com/sidebase/sidebase/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/nuxt/framework/workflows/ci/badge.svg?branch=main&event=push" alt="CI Status"></a>
+ [![GitHub stars](https://badgen.net/github/stars/sidebase/sidebase)](https://GitHub.com/sidebase/sidebase/)
+ [![License][license-src]][license-href]
 [![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
 [![Join our Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/9MUHR8WT9B)
-[![GitHub stars](https://badgen.net/github/stars/sidestream-tech/sidebase)](https://GitHub.com/sidestream-tech/sidebase/)
+
 
 sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript.
 
@@ -55,11 +57,11 @@ The key features are:
 - 🏎️ **Fast to code**: Database, example tests, example components and example pages are all there for you to fill out
 - 🐛 **Fewer bugs**: Strong data-validation using `zod` to validate all transferred data, fully typed API-routes, strict DB models via `TypeORM`
 - 😊 **Easy to use**: Designed to follow best practices and to be ready-to-go for development, without additional dev-dependencies like `docker` that make it hard to get started
-- 🚀 **Ready for launch**: Github Actions CI, Dockerfile, easy switch to most popular SQL-databases are all there, out of the box ([get in touch if you're missing something](https://github.com/sidestream-tech/sidebase/issues/new/choose))
+- 🚀 **Ready for launch**: Github Actions CI, Dockerfile, easy switch to most popular SQL-databases are all there, out of the box ([get in touch if you're missing something](https://github.com/sidebase/sidebase/issues/new/choose))
 
 To facilitate this `sidebase` bootstraps a nuxt 3 project that permits developing a backend and a frontend using just Nuxt 3 with overarching TypeScript support. We want to show the world how enjoyable end-to-end typescript programming can be, displacing the myth that JS/TS-backends are no good. This starter solves a lot fo the "real-world" problems that occur after you start using Nuxt or any other framework: How to write backend tests? How to write component tests? How to calculate test coverage? How to integrate a database? How to build a docker image? ...?
 
-If you have any problems with this project (e.g., setting it up on your PC) [open an issue](https://github.com/sidestream-tech/sidebase/issues/new/choose) and we'll figure it out together with you 🎉
+If you have any problems with this project (e.g., setting it up on your PC) [open an issue](https://github.com/sidebase/sidebase/issues/new/choose) and we'll figure it out together with you 🎉
 
 ## Documentation
 
@@ -156,11 +158,11 @@ If you have type-problems after running `npm i` for the first time:
 - Reload the `vue` volar server (VS Code command: "Volar: Restart Vue Server")
 - Close and re-open the file you have problems with
 
-If none of this works, file an issue (preferrably with a reproduction) [here](https://github.com/sidestream-tech/sidebase/issues/new/choose).
+If none of this works, file an issue (preferrably with a reproduction) [here](https://github.com/sidebase/sidebase/issues/new/choose).
 
-#### `nuxt-sidestream-parse`
+#### `nuxt-parse`
 
-1. [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) to validate and deserialize data from the `server` in the `frontend`:
+1. [`nuxt-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) to validate and deserialize data from the `server` in the `frontend`:
     - Define a zod-schema for the response of your endpoint, [like so](./app/server/schemas/healthz.ts):
         ```ts
         // file: ~/server/schemas/healthz.ts
@@ -203,7 +205,7 @@ If none of this works, file an issue (preferrably with a reproduction) [here](ht
         ```
     - That's it! `data` will be fully typed AND all data inside will be de-serialized, so `time` will be a `Date`-object, and not a string, that you first need to deserialize
     - If an `error` is thrown, it's done using nuxt [`createError`](https://v3.nuxtjs.org/api/utils/create-error/), so it works well in frontend and on the server. `data` will be null in that case. You can find zod-details about your error in `error.data`
-2. Use [`nuxt-sidestream-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) to validate data that the user has passed to your API endpoint:
+2. Use [`nuxt-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) to validate data that the user has passed to your API endpoint:
     - Parse user data like this:
         ```ts
         import { defineEventHandler } from 'h3'
@@ -229,3 +231,9 @@ If none of this works, file an issue (preferrably with a reproduction) [here](ht
 ## License
 
 [MIT](./LICENSE)
+
+
+<!-- Badges -->
+
+[license-src]: https://img.shields.io/npm/l/@sidebase/nuxt-session.svg
+[license-href]: https://npmjs.com/package/@sidebase/nuxt-session
