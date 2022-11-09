@@ -1,4 +1,3 @@
-/// <reference types="@histoire/plugin-vue/components" />
 import path from 'path'
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'

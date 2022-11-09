@@ -3,5 +3,4 @@ npm-debug*
 .nuxt
 dist
 tests
-.histoire
 .output
