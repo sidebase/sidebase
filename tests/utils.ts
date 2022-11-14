@@ -1,4 +1,4 @@
-import type { CompatibilityEventHandler, RouterMethod } from 'h3'
+import type { EventHandler, RouterMethod } from 'h3'
 import { createApp, createRouter } from 'h3'
 import type { SuperTest, Test } from 'supertest'
 import supertest from 'supertest'
@@ -16,7 +16,7 @@ declare interface AppTestingUtils {
 export declare interface PathMethodHandler {
   path: string
   method: RouterMethod
-  handler: CompatibilityEventHandler
+  handler: EventHandler
 }
 
 /**

@@ -1,5 +1,5 @@
 import { defineEventHandler } from 'h3'
-import type { CompatibilityEvent } from 'h3'
+import type { H3Event } from 'h3'
 import { parseBodyAs, parseDataAs, parseParamsAs, z } from '@sidebase/nuxt-parse'
 import { Example, exampleFull, exampleUpdate } from '~/server/database/entities/Example'
 
@@ -7,7 +7,7 @@ const paramsSchema = z.object({
   id: z.string().uuid(),
 })
 
-export default defineEventHandler(async (event: CompatibilityEvent) => {
+export default defineEventHandler(async (event: H3Event) => {
   // Parse the request parameters (so the dynamic data that is part of the URL, e.g.: `/example/1` where `1` is the id)
   const params = parseParamsAs(event, paramsSchema)
 
