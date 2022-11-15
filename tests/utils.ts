@@ -1,5 +1,5 @@
 import type { EventHandler, RouterMethod } from 'h3'
-import { createApp, createRouter } from 'h3'
+import { createApp, createRouter, toNodeListener } from 'h3'
 import type { SuperTest, Test } from 'supertest'
 import supertest from 'supertest'
 import { AppDataSource } from '~/server/database'
@@ -55,5 +55,5 @@ export const setupApiAndDatabase = async (routesToSetup: PathMethodHandler[]): P
   await AppDataSource.synchronize(true)
 
   // Return `request`, use like `await request.get('/some/path')`
-  return { request: supertest(app) }
+  return { request: supertest(toNodeListener(app)) }
 }
