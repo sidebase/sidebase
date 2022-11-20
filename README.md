@@ -12,7 +12,7 @@
 
 sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript.
 
-With this nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase on Twitter:
+With this Nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase on Twitter:
 > Beautiful work on sidebase!
 
 ## Quick start
@@ -41,8 +41,8 @@ With this nuxt 3 starter you get production-ready frontend + backend projects wh
 
 The key features are:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
-    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 RC.10`](https://v3.nuxtjs.org/),
-    - Data base models, migrations, queries and easy DB-switching via [`TypeORM`](https://typeorm.io/),
+    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 (stable)`](https://v3.nuxtjs.org/),
+    - Database models, migrations, queries and easy DB-switching via [`TypeORM`](https://typeorm.io/),
     - Frontend- and Backend data-transformation via [`nuxt-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) and [`zod`](https://github.com/colinhacks/zod),
     - In-memory development SQL-database via [`sqlite3`](https://www.sqlite.org/index.html),
     - Linting via [`eslint`](https://eslint.org/),

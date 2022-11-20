@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@sidebase/nuxt-parse": "^0.3.0",
-    "sqlite3": "^5.1.2",
+    "better-sqlite3": "^7.6.2",
     "typeorm": "^0.3.10"
   },
   "devDependencies": {
