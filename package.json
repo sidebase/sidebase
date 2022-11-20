@@ -16,9 +16,7 @@
     "test:watch": "npm-run-all postinstall && TZ=UTC vitest",
     "test:ui": "npm-run-all postinstall && TZ=UTC vitest --ui",
     "prepare": "husky install",
-    "postinstall": "nuxi prepare",
-    "story": "histoire dev",
-    "story:build": "histoire build"
+    "postinstall": "nuxi prepare"
   },
   "dependencies": {
     "@sidebase/nuxt-parse": "^0.3.0",

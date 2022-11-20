@@ -50,7 +50,6 @@ The key features are:
     - Component tests via [`test-library/vue`](https://testing-library.com/),
     - API tests via [`supertest`](https://github.com/visionmedia/supertest),
     - Code coverage via [`c8`](https://github.com/bcoe/c8),
-    - Component stories via [`histoire`](https://histoire.dev/),
     - CSS utiltities via [`TailwindCSS`](https://tailwindcss.com/),
     - CSS components via [`Ant Design Vue`](https://antdv.com/components/overview),
     - Type checking in script and template via [`Volar / vue-tsc`](https://github.com/johnsoncodehk/volar)
@@ -73,7 +72,6 @@ Useful Commands for development, testing and deployment:
 - Develop & Debug the app:
     - `npm i`: Install required dependencies
     - `npm run dev`: Start the fullstack app, including database
-    - `npm run story`: Start `histoire` for component story based development of UI
 - Linting & Formatting (`npm run lint`)
     - `npm run lint:style`: eslint for formatting & linting
     - `npm run lint:style -- --fix`: Autofix styles and lints where possible
@@ -108,7 +106,7 @@ Useful Commands for development, testing and deployment:
     - `nvm use`: If you use `nvm`, use this command to make sure that your local environment uses the correct, required node version
     - Pre-commit checking (husky) & fixing (lint-staged)
     - github CI pipeline to linting, testing, typing checks
-    - nuxt-component support in tests and histoire
+    - nuxt-component support in tests
     - debug sql database queries by setting `logging: true` in the `database/index.ts`: This will show you a live log of all ongoing database queries which is super helpful to debug database problems
 
 ### Guides
