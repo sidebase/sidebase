@@ -1,10 +1,10 @@
-import { createError, defineEventHandler } from 'h3'
+import { createError, eventHandler } from 'h3'
 import { AppDataSource } from '../database'
 import type { ResponseHealthcheck } from '../schemas/healthz'
 
 const startupTime = new Date()
 
-export default defineEventHandler((): ResponseHealthcheck => {
+export default eventHandler((): ResponseHealthcheck => {
   if (!AppDataSource.isInitialized) {
     console.error('Healthcheck failed: DB connection not initialized')
     throw createError({ statusCode: 500 })

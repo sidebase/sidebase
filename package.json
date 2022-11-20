@@ -16,22 +16,18 @@
     "test:watch": "npm-run-all postinstall && TZ=UTC vitest",
     "test:ui": "npm-run-all postinstall && TZ=UTC vitest --ui",
     "prepare": "husky install",
-    "postinstall": "nuxi prepare",
-    "story": "histoire dev",
-    "story:build": "histoire build"
+    "postinstall": "nuxi prepare"
   },
   "dependencies": {
-    "@sidebase/nuxt-parse": "^0.2.7",
-    "sqlite3": "^5.1.2",
+    "@sidebase/nuxt-parse": "^0.3.0",
+    "better-sqlite3": "^7.6.2",
     "typeorm": "^0.3.10"
   },
   "devDependencies": {
     "@antfu/eslint-config-vue": "^0.27.0",
     "@babel/core": "^7.19.3",
     "@faker-js/faker": "^7.6.0",
-    "@histoire/plugin-nuxt": "^0.10.7",
-    "@histoire/plugin-vue": "^0.10.7",
-    "@nuxtjs/tailwindcss": "^6.0.1",
+    "@nuxtjs/tailwindcss": "^6.1.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/vue": "^6.6.1",
     "@types/node": "^18.11.0",
@@ -46,12 +42,11 @@
     "eslint": "^8.25.0",
     "eslint-plugin-tailwindcss": "^3.6.2",
     "eslint-plugin-vue": "^9.6.0",
-    "histoire": "^0.10.7",
     "husky": "^8.0.1",
     "jsdom": "^20.0.1",
     "lint-staged": "^13.0.1",
     "npm-run-all": "^4.1.5",
-    "nuxt": "^3.0.0-rc.10",
+    "nuxt": "^3.0.0",
     "supertest": "^6.3.0",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.8",
@@ -61,6 +56,11 @@
     "vue": "^3.2.41",
     "vue-loader": "^17.0.0",
     "vue-tsc": "^1.0.8"
+  },
+  "overrides": {
+    "typeorm": {
+      "parse5": "6.0.1"
+    }
   },
   "lint-staged": {
     "*{.js,.ts,.vue}": "eslint --fix ."

@@ -1,4 +1,3 @@
-/// <reference types="@histoire/plugin-vue/components" />
 import path from 'path'
 import { defineConfig } from 'vite'
 import Components from 'unplugin-vue-components/vite'
@@ -33,7 +32,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    // Make composable, components and ant-design imports work inside `vitest`, `storybook`
+    // Make composable, components and ant-design imports work inside `vitest`
     pluginVue,
     Components({
       dirs: ['~/components'],

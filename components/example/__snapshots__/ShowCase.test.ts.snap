@@ -7,7 +7,7 @@ exports[`ShowCase > mounts and is still the same 1`] = `
   <form>
     <div class=\\"flex\\"><span class=\\"ant-input-group-wrapper\\"><span class=\\"ant-input-wrapper ant-input-group\\"><span class=\\"ant-input-group-addon\\">Please enter your name:</span><input placeholder=\\"Your name...\\" type=\\"text\\" class=\\"ant-input\\">
       <!----></span></span><button class=\\"ant-btn ant-btn-primary\\" type=\\"submit\\">
-        <transition-stub>
+        <transition-stub name=\\"ant-btn-loading-icon-motion\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
           <!---->
         </transition-stub><span>Submit</span>
       </button>

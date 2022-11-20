@@ -3,7 +3,7 @@ import { Example } from './entities/Example'
 import { isProduction } from '~/helpers'
 
 const AppDataSource = new DataSource({
-  type: 'sqlite',
+  type: 'better-sqlite3',
   // TODO: Only synchronize in production once we're stable
   synchronize: !isProduction || true,
   logging: false,

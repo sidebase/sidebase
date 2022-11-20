@@ -12,7 +12,7 @@
 
 sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript.
 
-With this nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase on Twitter:
+With this Nuxt 3 starter you get production-ready frontend + backend projects while still having fun! [Atinux, CEO of Nuxt](https://github.com/Atinux) said to sidebase on Twitter:
 > Beautiful work on sidebase!
 
 ## Quick start
@@ -41,8 +41,8 @@ With this nuxt 3 starter you get production-ready frontend + backend projects wh
 
 The key features are:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
-    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 RC.10`](https://v3.nuxtjs.org/),
-    - Data base models, migrations, queries and easy DB-switching via [`TypeORM`](https://typeorm.io/),
+    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 (stable)`](https://v3.nuxtjs.org/),
+    - Database models, migrations, queries and easy DB-switching via [`TypeORM`](https://typeorm.io/),
     - Frontend- and Backend data-transformation via [`nuxt-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) and [`zod`](https://github.com/colinhacks/zod),
     - In-memory development SQL-database via [`sqlite3`](https://www.sqlite.org/index.html),
     - Linting via [`eslint`](https://eslint.org/),
@@ -50,7 +50,6 @@ The key features are:
     - Component tests via [`test-library/vue`](https://testing-library.com/),
     - API tests via [`supertest`](https://github.com/visionmedia/supertest),
     - Code coverage via [`c8`](https://github.com/bcoe/c8),
-    - Component stories via [`histoire`](https://histoire.dev/),
     - CSS utiltities via [`TailwindCSS`](https://tailwindcss.com/),
     - CSS components via [`Ant Design Vue`](https://antdv.com/components/overview),
     - Type checking in script and template via [`Volar / vue-tsc`](https://github.com/johnsoncodehk/volar)
@@ -73,7 +72,6 @@ Useful Commands for development, testing and deployment:
 - Develop & Debug the app:
     - `npm i`: Install required dependencies
     - `npm run dev`: Start the fullstack app, including database
-    - `npm run story`: Start `histoire` for component story based development of UI
 - Linting & Formatting (`npm run lint`)
     - `npm run lint:style`: eslint for formatting & linting
     - `npm run lint:style -- --fix`: Autofix styles and lints where possible
@@ -108,7 +106,7 @@ Useful Commands for development, testing and deployment:
     - `nvm use`: If you use `nvm`, use this command to make sure that your local environment uses the correct, required node version
     - Pre-commit checking (husky) & fixing (lint-staged)
     - github CI pipeline to linting, testing, typing checks
-    - nuxt-component support in tests and histoire
+    - nuxt-component support in tests
     - debug sql database queries by setting `logging: true` in the `database/index.ts`: This will show you a live log of all ongoing database queries which is super helpful to debug database problems
 
 ### Guides
@@ -159,6 +157,17 @@ If you have type-problems after running `npm i` for the first time:
 - Close and re-open the file you have problems with
 
 If none of this works, file an issue (preferrably with a reproduction) [here](https://github.com/sidebase/sidebase/issues/new/choose).
+
+#### `yarn`
+
+We use the `overrides` key in the `package.json`. `yarn` does not support this, you will have to replace it with:
+```
+"resolutions": {
+    "typeorm/**/parse5": "6.0.1"
+}
+```
+
+for it to work with yarn.
 
 #### `nuxt-parse`
 

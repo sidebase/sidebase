@@ -39,7 +39,6 @@ describe(`GET ${endpointBasePath}`, () => {
     expect(response.statusCode).toBe(500)
     expect(response.body).toEqual({
       statusCode: 500,
-      statusMessage: 'Internal Server Error',
       stack: [],
     })
 
