@@ -32,7 +32,7 @@ export default defineConfig({
     },
   },
   plugins: [
-    // Make composable, components and ant-design imports work inside `vitest`, `storybook`
+    // Make composable, components and ant-design imports work inside `vitest`
     pluginVue,
     Components({
       dirs: ['~/components'],
