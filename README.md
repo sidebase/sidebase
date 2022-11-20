@@ -158,6 +158,17 @@ If you have type-problems after running `npm i` for the first time:
 
 If none of this works, file an issue (preferrably with a reproduction) [here](https://github.com/sidebase/sidebase/issues/new/choose).
 
+#### `yarn`
+
+We use the `overrides` key in the `package.json`. `yarn` does not support this, you will have to replace it with:
+```
+"resolutions": {
+    "typeorm/**/parse5": "6.0.1"
+}
+```
+
+for it to work with yarn.
+
 #### `nuxt-parse`
 
 1. [`nuxt-parse`](https://www.npmjs.com/package/@sidebase/nuxt-parse) to validate and deserialize data from the `server` in the `frontend`:
