@@ -1,19 +1,22 @@
-import { createError, eventHandler } from 'h3'
-import { AppDataSource } from '../database'
-import type { ResponseHealthcheck } from '../schemas/healthz'
+import { usePrisma } from '../middleware/prisma'
 
 const startupTime = new Date()
 
-export default eventHandler((): ResponseHealthcheck => {
-  if (!AppDataSource.isInitialized) {
-    console.error('Healthcheck failed: DB connection not initialized')
-    throw createError({ statusCode: 500 })
+const handler = eventHandler(async (event) => {
+  const prisma = usePrisma(event)
+  try {
+    await prisma.$queryRaw`SELECT 1;`
+  } catch (error) {
+    throw createError({ statusCode: 500, statusMessage: 'DB failed initialization check' })
   }
 
   return {
     status: 'healthy',
     time: new Date(),
     startupTime,
-    nuxtAppVersion: process.env.NUXT_APP_VERSION || process.env.npm_package_version || 'unknown',
+    nuxtAppVersion: useRuntimeConfig().version || 'unknown'
   }
 })
+
+export type HealthCheckData = Awaited<ReturnType<typeof handler>>
+export default handler

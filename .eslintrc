@@ -1,28 +1,13 @@
 {
-    "plugins": ["tailwindcss"],
-    "extends": ["@antfu/vue", "plugin:tailwindcss/recommended"],
+    "extends": ["@nuxtjs/eslint-config-typescript"],
     "overrides": [
         {
             "files": [
                 "./server/**/*.ts"
             ],
             "rules": {
-                "no-console": "off",
-                "no-undef": "error"
+                "no-console": ["error", { "allow": ["info", "warn", "trace", "error"]}]
             }
         }
-    ],
-    "rules": {
-        "curly": [
-            "error",
-            "all"
-        ],
-        "brace-style": "off",
-        "@typescript-eslint/brace-style": [
-            "error",
-            "1tbs"
-        ],
-        "no-unused-vars": "error",
-        "tailwindcss/no-custom-classname": "off"
-    }
+    ]
 }
