@@ -13,13 +13,7 @@ export const usePrisma = (event: H3Event) => event.context.prisma
 
 export default eventHandler((event) => {
   if (!prisma) {
-    prisma = new PrismaClient({
-      datasources: {
-        db: {
-          url: process.env.DATABASE_URL
-        }
-      }
-    })
+    prisma = new PrismaClient()
   }
   event.context.prisma = prisma
 })
