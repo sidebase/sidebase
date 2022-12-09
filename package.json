@@ -12,10 +12,7 @@
     "postinstall": "nuxt prepare",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "typecheck": "tsc --noEmit",
-    "db:dev:reset": "prisma db push --force-reset",
-    "db:dev:migrate": "prisma migrate dev",
-    "db:prod:migrate": "prisma migrate deploy"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

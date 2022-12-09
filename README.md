@@ -1,20 +1,19 @@
 # sidebase
 
- <a href="https://github.com/sidebase/sidebase/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/nuxt/framework/workflows/ci/badge.svg?branch=main&event=push" alt="CI Status"></a>
- [![GitHub stars](https://badgen.net/github/stars/sidebase/sidebase)](https://GitHub.com/sidebase/sidebase/)
- [![License][license-src]][license-href]
+<a href="https://github.com/sidebase/sidebase/actions?query=branch%3Amain+event%3Apush"><img src="https://github.com/nuxt/framework/workflows/ci/badge.svg?branch=main&event=push" alt="CI Status"></a>
+[![GitHub stars](https://badgen.net/github/stars/sidebase/sidebase)](https://GitHub.com/sidebase/sidebase/)
+[![License][license-src]][license-href]
 [![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
 [![Join our Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/9MUHR8WT9B)
 
 
 > sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript. Creating production-ready fullstack Typescript projects becomes a breeze!
 
-
 ## Quick start
 
-1. Use the official [`nuxi`-cli](https://v3.nuxtjs.org/api/commands/init) to start:
+1. Use the official [`nuxi`-cli](https://nuxt.com/docs/api/commands/init#nuxi-init) to start:
     ```sh
-    npx nuxi@latest init -t community/sidebase
+    npx nuxi init -t community/sidebase
     ```
 2. Go into the `nuxt-sidebase/` directory
     ```sh
@@ -24,25 +23,18 @@
     ```sh
     npm i
     ```
-4. Configure `prisma`:
-    - Copy the `.env.example` file and adapt it to your needs (e.g., to change the `DATABASE_URL`):
-        ```sh
-        > cp .env.example .env
-        ```
-    - Further edit the [`prisma/schema.prisma`](./prisma/schema.prisma) file as required
-5. Start developing (with database, backend, API, ... running) at [localhost:3000](http://localhost:3000)
+4. Start developing (with database, backend, API, ... running) at [localhost:3000](http://localhost:3000)
     ```sh
     npm run dev
     ```
 
-Visit the documentation for further information on [getting started, adding authentication, adding session management and more](https://sidebase.io/sidebase)
-
+Visit the documentation for further information on [getting started, adding authentication, adding session management and more](https://sidebase.io/sidebase/documentation)
 
 ## Features
 
 The key features are:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
-    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 (stable)`](https://v3.nuxtjs.org/),
+    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 (stable)`](https://nuxt.com/),
     - Database models, migrations, queries and easy DB-switching via [`Prisma`](https://prisma.io/),
     - In-memory development SQL-database via [`sqlite3`](https://www.sqlite.org/index.html),
     - Linting via [`eslint`](https://eslint.org/),
