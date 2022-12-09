@@ -9,30 +9,11 @@
 
 > sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript. Creating production-ready fullstack Typescript projects becomes a breeze!
 
-## Quick start
-
-1. Use the official [`nuxi`-cli](https://nuxt.com/docs/api/commands/init#nuxi-init) to start:
-    ```sh
-    npx nuxi init -t community/sidebase
-    ```
-2. Go into the `nuxt-sidebase/` directory
-    ```sh
-    cd nuxt-sidebase
-    ```
-3. Install the dependencies
-    ```sh
-    npm i
-    ```
-4. Start developing (with database, backend, API, ... running) at [localhost:3000](http://localhost:3000)
-    ```sh
-    npm run dev
-    ```
-
-Visit the documentation for further information on [getting started, adding authentication, adding session management and more](https://sidebase.io/sidebase/documentation)
+## Visit [sidebase.io/sidebase](https://sidebase.io/sidebase) for quick-start, docs, guides and more!
 
 ## Features
 
-The key features are:
+With sidebase you can build production ready, robust, maintainable, fullstack applications:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
     - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 (stable)`](https://nuxt.com/),
     - Database models, migrations, queries and easy DB-switching via [`Prisma`](https://prisma.io/),
@@ -60,6 +41,5 @@ If you have any problems with this project (e.g., setting it up on your PC) [ope
 
 
 <!-- Badges -->
-
 [license-src]: https://img.shields.io/npm/l/@sidebase/nuxt-session.svg
 [license-href]: https://npmjs.com/package/@sidebase/nuxt-session
