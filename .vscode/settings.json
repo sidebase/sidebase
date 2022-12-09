@@ -21,7 +21,7 @@
   ],
   "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
   "files.associations": {
-    "*.ccs": "tailwindcss"
+    "*.css": "tailwindcss"
   },
   "volar.autoCompleteRefs": true,
 }
