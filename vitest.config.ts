@@ -30,6 +30,7 @@ export default defineConfig({
     svgLoader()
   ],
   test: {
+    globalSetup: ['./setupDbEnv'],
     globals: true,
     environment: 'jsdom',
     threads: false,

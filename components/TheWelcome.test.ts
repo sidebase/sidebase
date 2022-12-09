@@ -15,7 +15,7 @@ describe('TheWelcome', () => {
     const { getByText } = render(TheWelcome, { props: { healthCheckData, lastRefreshedAt: new Date() } })
 
     // Ensure some expected text is there:
-    getByText('sidebase is the productive Nuxt 3 stack.', { exact: false })
+    getByText('is the productive Nuxt 3 stack.', { exact: false })
 
     // Ensure all expected data is there:
     getByText(`Server v${healthCheckData.nuxtAppVersion} initialized`, { exact: false })
@@ -31,7 +31,7 @@ describe('TheWelcome', () => {
     const { getByText } = render(TheWelcome, { props: { healthCheckData: null, lastRefreshedAt: new Date() } })
 
     // Ensure some expected text is there:
-    getByText('sidebase is the productive Nuxt 3 stack.', { exact: false })
+    getByText('is the productive Nuxt 3 stack.', { exact: false })
 
     // Ensure the error message is there
     getByText('Server initialization failed', { exact: false })

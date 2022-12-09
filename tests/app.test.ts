@@ -12,7 +12,7 @@ describe('app', () => {
     const html = await $fetch('/')
 
     // Shows expected text
-    expect(html).toContain('sidebase is the productive Nuxt 3 stack')
+    expect(html).toContain('is the productive Nuxt 3 stack')
 
     // Contains data from healthcheck endpoint
     expect(html).toContain('Server v0.0.1 initialized')
