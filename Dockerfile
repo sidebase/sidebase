@@ -30,6 +30,8 @@ ENV NUXT_HOST=0.0.0.0
 ARG NUXT_APP_VERSION
 ENV NUXT_APP_VERSION=${NUXT_APP_VERSION}
 
+ENV DATABASE_URL=file:./db.sqlite
+
 # Run in production mode
 ENV NODE_ENV=production
 

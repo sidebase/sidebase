@@ -11,7 +11,7 @@
     "test:ui": "TZ=UTC vitest --ui --open",
     "postinstall": "nuxt prepare",
     "generate": "nuxt generate",
-    "preview": "nuxt preview",
+    "preview": "DATABASE_URL=file:./db.sqlite nuxt preview",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
