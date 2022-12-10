@@ -1,4 +1,4 @@
-import { usePrisma } from '../middleware/prisma'
+import { usePrisma } from '@sidebase/nuxt-prisma'
 
 const startupTime = new Date()
 

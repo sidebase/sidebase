@@ -1,1 +1,7 @@
-export default eventHandler(event => event.context.prisma.example.findMany())
+import { usePrisma } from '@sidebase/nuxt-prisma'
+
+export default eventHandler((event) => {
+  const prisma = usePrisma(event)
+
+  return prisma.example.findMany()
+})

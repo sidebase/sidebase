@@ -1,5 +1,8 @@
+import { usePrisma } from '@sidebase/nuxt-prisma'
+
 export default eventHandler(async (event) => {
-  const { params, prisma } = event.context
+  const prisma = usePrisma(event)
+  const { params } = event.context
 
   const id = params.id
   const body = await readBody(event)

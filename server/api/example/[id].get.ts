@@ -1,5 +1,8 @@
+import { usePrisma } from '@sidebase/nuxt-prisma'
+
 export default eventHandler(async (event) => {
-  const { params, prisma } = event.context
+  const prisma = usePrisma(event)
+  const { params } = event.context
 
   const example = await prisma.example.findFirst({ where: { id: params.id } })
   if (!example) {

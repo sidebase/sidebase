@@ -37,6 +37,7 @@
     "vitest": "^0.25.6"
   },
   "dependencies": {
-    "@prisma/client": "^4.7.1"
+    "@prisma/client": "^4.7.1",
+    "@sidebase/nuxt-prisma": "^0.1.0"
   }
 }
