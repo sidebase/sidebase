@@ -7,7 +7,7 @@ on:
     branches: [main]
 
 jobs:
-  build:
+  test:
 
     runs-on: ubuntu-latest
 
@@ -22,5 +22,7 @@ jobs:
       - run: npm run build
 
       - run: npm run lint
+
+      - run: npm run typecheck
 
       - run: npm run test

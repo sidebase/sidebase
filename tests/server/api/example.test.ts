@@ -1,102 +1,100 @@
-import { beforeEach, describe, expect, it } from 'vitest'
-import type { SuperTest, Test } from 'supertest'
+import { describe, expect, it, beforeEach } from 'vitest'
+import { setup, $fetch } from '@nuxt/test-utils'
 import { faker } from '@faker-js/faker'
-import type { PathMethodHandler } from '../../utils'
-import { setupApiAndDatabase } from '../../utils'
-import handlerExampleGet from '~/server/api/example/[id].get'
-import handlerExamplePatch from '~/server/api/example/[id].patch'
-import handlerExampleGetAll from '~/server/api/example/index'
-import { consoleSpyError } from '~/tests/setupTestUtils'
-import { Example } from '~/server/database/entities/Example'
+import { Prisma } from '@prisma/client'
+import { resetDatabase } from '@sidebase/nuxt-prisma'
 
-const endpointBasePath = '/example'
-const endpoints: PathMethodHandler[] = [{
-  path: endpointBasePath,
-  method: 'get',
-  handler: handlerExampleGetAll,
-}, {
-  path: `${endpointBasePath}/:id`,
-  method: 'get',
-  handler: handlerExampleGet,
-}, {
-  path: `${endpointBasePath}/:id`,
-  method: 'patch',
-  handler: handlerExamplePatch,
-}]
-
-let request: SuperTest<Test>
-beforeEach(async () => {
-  const testingUtils = await setupApiAndDatabase(endpoints)
-
-  request = testingUtils.request
+await setup({
+  server: true,
+  browser: false
 })
 
-describe(`GET ${endpointBasePath}`, () => {
-  it('should return an empty list for list endpoint', async () => {
-    const response = await request.get(endpointBasePath)
+beforeEach(() => {
+  resetDatabase()
+})
 
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toStrictEqual([])
+describe('/api/example/', () => {
+  it('GET returns an empty list when no examples exist', async () => {
+    const result = await $fetch('/api/example')
+    expect(result).toStrictEqual([])
   })
 })
 
-// Generate test cases that check if `id` parameter is correctly validated for `id` based endpoints
-const idBasedEndpoints = endpoints.filter(endpoint => endpoint.path.endsWith('/:id'))
-describe.each(idBasedEndpoints)(`$method ${endpointBasePath}/:id check 404 and 422 for parameter`, ({ method }) => {
-  it('should throw a 404 error for an unknown id', async () => {
-    const response = await request[method](`${endpointBasePath}/${faker.datatype.uuid()}`)
-
-    expect(response.statusCode).toBe(404)
-    expect(response.body).toStrictEqual({
-      stack: [],
+describe('/api/example/:id', () => {
+  it('GET returns 404 when id does not exist', async () => {
+    const result = await $fetch('/api/example/1', {}).catch(error => error.data)
+    expect(result).toStrictEqual({
+      message: 'Failed to find example with id 1',
+      stack: '',
       statusCode: 404,
-      statusMessage: 'Failed to find desired record',
-    })
-
-    // Assert that server logged error, then reset spy so that global no-console-error assert does not fail
-    expect(consoleSpyError).toHaveBeenCalledOnce()
-    consoleSpyError.mockClear()
-  })
-
-  it('should throw a 422 error for a invalid id', async () => {
-    const response = await request[method](`${endpointBasePath}/bad-uuid`)
-
-    expect(response.statusCode).toBe(422)
-    expect(response.body).toStrictEqual({
-      data: {
-        issues: [
-          {
-            code: 'invalid_string',
-            message: 'Invalid uuid',
-            path: [
-              'id',
-            ],
-            validation: 'uuid',
-          },
-        ],
-        name: 'ZodError',
-      },
-      stack: [],
-      statusCode: 422,
-      statusMessage: 'Parameter parsing failed',
+      statusMessage: 'Failed to find example with id 1',
+      url: '/api/example/1'
     })
   })
-})
 
-describe(`PATCH ${endpointBasePath}/:id`, () => {
-  it('should update an entity', async () => {
-    const exampleToCreate = { description: faker.lorem.word(), details: faker.lorem.paragraphs() }
-    const example = await Example.save<Example>(exampleToCreate)
-    expect(example.description).toBe(exampleToCreate.description)
-    expect(example.details).toBe(exampleToCreate.details)
+  it('PUT creates an entity, then GET allows to fetch it', async () => {
+    // 1. Create the entity and assert that it has the correct shape & values
+    const exampleToCreate: Prisma.ExampleCreateInput = {
+      description: faker.lorem.paragraph(),
+      details: faker.lorem.paragraphs()
+    }
 
-    const exampleUpdate = { description: faker.lorem.word(), details: faker.lorem.paragraphs() }
-    const response = await request.patch(`${endpointBasePath}/${example.id}`).send(exampleUpdate)
-
-    expect(response.statusCode).toBe(200)
-    expect(response.body).toStrictEqual({
-      id: example.id,
-      ...exampleUpdate,
+    const exampleAfterUpsert = await $fetch(`/api/example/${faker.datatype.uuid()}`, {
+      method: 'PUT',
+      body: exampleToCreate
     })
+
+    expect(Object.keys(exampleAfterUpsert).sort()).toEqual(['id', 'description', 'details'].sort())
+    expect(exampleAfterUpsert.details).toBe(exampleToCreate.details)
+    expect(exampleAfterUpsert.description).toBe(exampleToCreate.description)
+
+    // 2. Fetch the entity from the GET endpoint
+    const exampleFromGet = await $fetch(`/api/example/${exampleAfterUpsert.id}`)
+
+    expect(exampleFromGet).toStrictEqual(exampleAfterUpsert)
+  })
+
+  it('PUT creates and entity if none exists, then updates it on a second call', async () => {
+    // 1. Create the entity and assert that it has the correct shape & values
+    const exampleToCreate: Prisma.ExampleCreateInput = {
+      description: faker.lorem.paragraph(),
+      details: faker.lorem.paragraphs()
+    }
+
+    const exampleAfterUpsert = await $fetch(`/api/example/${faker.datatype.uuid()}`, {
+      method: 'PUT',
+      body: exampleToCreate
+    })
+
+    expect(Object.keys(exampleAfterUpsert).sort()).toEqual(['id', 'description', 'details'].sort())
+    expect(exampleAfterUpsert.details).toBe(exampleToCreate.details)
+    expect(exampleAfterUpsert.description).toBe(exampleToCreate.description)
+
+    // 2. Update the entity and check if the value has changed
+    const updatePayload: Prisma.ExampleUpdateInput = { description: faker.lorem.paragraphs(), details: faker.lorem.paragraphs() }
+    const exampleAfterUpdate = await $fetch(`/api/example/${faker.datatype.uuid()}`, {
+      method: 'PUT',
+      body: updatePayload
+    })
+
+    expect(exampleAfterUpdate.description).toBe(updatePayload.description)
+    expect(exampleAfterUpdate.details).toBe(updatePayload.details)
+  })
+
+  it('PUT throws errors for invalid data', async () => {
+    // 1. Create the entity and assert that it has the correct shape & values
+    const exampleToCreate: Prisma.ExampleCreateInput = {
+      description: faker.lorem.paragraph(),
+      details: faker.lorem.paragraphs()
+    }
+
+    const exampleAfterUpsert = await $fetch('/api/example/1', {
+      method: 'PUT',
+      body: exampleToCreate
+    })
+
+    expect(Object.keys(exampleAfterUpsert).sort()).toEqual(['id', 'description', 'details'].sort())
+    expect(exampleAfterUpsert.details).toBe(exampleToCreate.details)
+    expect(exampleAfterUpsert.description).toBe(exampleToCreate.description)
   })
 })

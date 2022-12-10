@@ -1,18 +1,13 @@
-import { eventHandler } from 'h3'
-import type { H3Event } from 'h3'
-import { parseDataAs, parseParamsAs, z } from '@sidebase/nuxt-parse'
-import { Example, exampleFull } from '~/server/database/entities/Example'
+import { usePrisma } from '@sidebase/nuxt-prisma'
 
-const paramsSchema = z.object({
-  id: z.string().uuid(),
-})
+export default eventHandler(async (event) => {
+  const prisma = usePrisma(event)
+  const { params } = event.context
 
-export default eventHandler(async (event: H3Event) => {
-  // Parse the request parameters (so the dynamic data that is part of the URL, e.g.: `/example/1` where `1` is the id)
-  const params = parseParamsAs(event, paramsSchema)
+  const example = await prisma.example.findFirst({ where: { id: params.id } })
+  if (!example) {
+    throw createError({ statusCode: 404, statusMessage: `Failed to find example with id ${params.id}` })
+  }
 
-  // Return the full database-record after also passing it through a parsing step. This step is important as we:
-  // - might not want to return _all_ fields in the response, e.g., we might want to exclude internal meta-data fields like `createdAt` or secret fields like `password`,
-  // - might make a mistake in the code above where we would return totally different data by accident. This could go into production unnoticed and can be avoided like this
-  return parseDataAs(Example.findOneOrThrow({ where: { id: params.id } }), exampleFull)
+  return example
 })

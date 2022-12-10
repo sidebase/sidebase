@@ -18,5 +18,10 @@
     "javascript",
     "typescript",
     "vue"
-  ]
+  ],
+  "tailwindCSS.experimental.configFile": ".nuxt/tailwind.config.cjs",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  "volar.autoCompleteRefs": true,
 }

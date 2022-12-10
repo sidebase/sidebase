@@ -1,59 +1,71 @@
-import type { EventHandler, RouterMethod } from 'h3'
-import { createApp, createRouter, toNodeListener } from 'h3'
-import type { SuperTest, Test } from 'supertest'
-import supertest from 'supertest'
-import { AppDataSource } from '~/server/database'
+// from: https://github.com/nuxt/framework/blob/main/test/utils.ts
+import { expect } from 'vitest'
+import type { Page } from 'playwright'
+import { createPage, getBrowser, url, useTestContext } from '@nuxt/test-utils'
 
-declare interface AppTestingUtils {
-  request: SuperTest<Test>
-}
-
-/**
- * A triple of a path that a HTTP request is addressed to with method `method` which will be handled by a handler.
- *
- * NOTE: `path` can also contain patterns, like `/tasks/:id`, where `:id` will be matched to any characters following the last `/` dynamically. So `/tasks/1` in that case would make `id = 1`.
- */
-export declare interface PathMethodHandler {
-  path: string
-  method: RouterMethod
-  handler: EventHandler
-}
-
-/**
- * Setup a `h3` (the nuxt3 server) app and the database, returns a helper to make requests to server.
- * @param  {PathMethodHandler[]} routesToSetup Array of routes to setup on server.
- * @return {Promise<AppTestingUtils>} Helper to perform server requests.
- *
- * Examples:
- * ```ts
- * // Perform a get request
- * await request.get('/tasks')
- *
- * // Perform a post request and send some data
- * const response = await request.post('/tasks').send({ some: 'data' })
- *
- * // Get the response status
- * console.log(response.status)  // -> output Number, e.g.: 200
- * ```
- *
- */
-export const setupApiAndDatabase = async (routesToSetup: PathMethodHandler[]): Promise<AppTestingUtils> => {
-  // Setup routes
-  const router = createRouter()
-  for (const { path, method, handler } of routesToSetup) {
-    router.add(path, handler, method)
+export async function renderPage (path = '/') {
+  const ctx = useTestContext()
+  if (!ctx.options.browser) {
+    throw new Error('`renderPage` require `options.browser` to be set')
   }
 
-  // Setup app
-  const app = createApp()
-  app.use(router)
+  const browser = await getBrowser()
+  const page = await browser.newPage({})
+  const pageErrors: Error[] = []
+  const consoleLogs: { type: string, text: string }[] = []
 
-  // Reset database
-  if (!AppDataSource.isInitialized) {
-    await AppDataSource.initialize()
+  page.on('console', (message) => {
+    consoleLogs.push({
+      type: message.type(),
+      text: message.text()
+    })
+  })
+  page.on('pageerror', (err) => {
+    pageErrors.push(err)
+  })
+
+  if (path) {
+    await page.goto(url(path), { waitUntil: 'networkidle' })
   }
-  await AppDataSource.synchronize(true)
 
-  // Return `request`, use like `await request.get('/some/path')`
-  return { request: supertest(toNodeListener(app)) }
+  return {
+    page,
+    pageErrors,
+    consoleLogs
+  }
+}
+
+export async function expectNoClientErrors (path: string) {
+  const ctx = useTestContext()
+  if (!ctx.options.browser) {
+    return
+  }
+
+  const { pageErrors, consoleLogs } = (await renderPage(path))!
+
+  const consoleLogErrors = consoleLogs.filter(i => i.type === 'error')
+  const consoleLogWarnings = consoleLogs.filter(i => i.type === 'warning')
+
+  expect(pageErrors).toEqual([])
+  expect(consoleLogErrors).toEqual([])
+  expect(consoleLogWarnings).toEqual([])
+}
+
+export async function withLogs (callback: (page: Page, logs: string[]) => Promise<void>) {
+  let done = false
+  const page = await createPage()
+  const logs: string[] = []
+  page.on('console', (msg) => {
+    const text = msg.text()
+    if (done) {
+      throw new Error('Test finished prematurely')
+    }
+    logs.push(text)
+  })
+
+  try {
+    await callback(page, logs)
+  } finally {
+    done = true
+  }
 }

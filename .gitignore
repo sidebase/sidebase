@@ -3,6 +3,8 @@
 *.log
 *.sql
 *.sqlite
+*.db
+*.sqlite-journal
 /logs
 npm-debug.log*
 yarn-debug.log*
@@ -52,11 +54,13 @@ jspm_packages/
 # next.js build output
 .next
 
-# nuxt.js build output
+# Nuxt
+*.log*
 .nuxt
+.nitro
+.cache
 .output
-
-# Nuxt generate
+.env
 dist
 
 # vuepress build output
