@@ -25,6 +25,7 @@
     "@vitest/coverage-c8": "^0.25.6",
     "@vitest/ui": "^0.25.6",
     "dayjs": "^1.11.7",
+    "eslint": "^8.29.0",
     "jsdom": "^20.0.3",
     "nuxt": "3.0.0",
     "nuxt-svgo": "^1.1.0",
@@ -38,6 +39,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.7.1",
+    "@sidebase/core": "^0.1.1-alpha.1",
     "@sidebase/nuxt-prisma": "^0.1.0"
   }
 }

@@ -1,5 +1,7 @@
 <template>
   <div>
-    <TheWelcomeContainer />
+    <TheWelcomeContainer>
+      <NTimeline><NTimelineItem /></NTimeline>
+    </TheWelcomeContainer>
   </div>
 </template>
