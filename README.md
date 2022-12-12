@@ -11,6 +11,13 @@
 
 ## Visit [sidebase.io/sidebase](https://sidebase.io/sidebase) for quick-start, docs, guides and more!
 
+To get started, run:
+```sh
+npx nuxi@latest init -t community/sidebase
+```
+
+Afterwards, read [the Getting Started documentation](https://sidebase.io/sidebase/getting-started/quick-start) to continue.
+
 ## Features
 
 With sidebase you can build production ready, robust, maintainable, fullstack applications:
