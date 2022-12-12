@@ -7,5 +7,5 @@ export default defineNuxtConfig({
     version: '0.0.1'
   },
   modules: ['@nuxtjs/tailwindcss', 'nuxt-svgo', '@huntersofbook/naive-ui-nuxt'],
-  extends: ['@sidebase/nuxt-prisma']
+  extends: ['@sidebase/core', '@sidebase/nuxt-prisma']
 })
