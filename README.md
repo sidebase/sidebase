@@ -6,14 +6,13 @@
 [![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
 [![Join our Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/9MUHR8WT9B)
 
-
-> sidebase is a modern, best-practice, batteries-included fullstack-app starter based on Nuxt 3 and TypeScript. Creating production-ready fullstack Typescript projects becomes a breeze!
+> sidebase is a web development kit to build production ready fullstack Nuxt 3 apps quickly. sidebase relies on modern, fully-typed and best-practice technology to achieve this goal. sidebase embraces the fullstack TypeScript approach to app development: Code sharing between client and server, reduced learning curve for engineers and code-reuse across apps are things we love about this approach. That said, you can also use sidebase to build client-side only apps.
 
 ## Visit [sidebase.io/sidebase](https://sidebase.io/sidebase) for quick-start, docs, guides and more!
 
 To get started, run:
 ```sh
-npx nuxi@latest init -t community/sidebase
+npm create sidebase@latest
 ```
 
 Afterwards, read [the Getting Started documentation](https://sidebase.io/sidebase/getting-started/quick-start) to continue.
@@ -24,17 +23,6 @@ Afterwards, read [the Getting Started documentation](https://sidebase.io/sidebas
 
 With sidebase you can build production ready, robust, maintainable, fullstack applications:
 - 🎒 **Fullstack**: Develop frontend and backend in a single TypeScript code base
-    - Fullstack [`Vue 3`](https://vuejs.org/) + [`Nuxt 3 (stable)`](https://nuxt.com/),
-    - Database models, migrations, queries and easy DB-switching via [`Prisma`](https://prisma.io/),
-    - In-memory development SQL-database via [`sqlite3`](https://www.sqlite.org/index.html),
-    - Linting via [`eslint`](https://eslint.org/),
-    - Test management, Test UI, component snapshotting via [`vitest`](https://vitest.dev/),
-    - Component tests via [`test-library/vue`](https://testing-library.com/),
-    - API tests via the [`@nuxt/test-utils`](https://nuxt.com/docs/getting-started/testing#testing),
-    - Code coverage via [`c8`](https://github.com/bcoe/c8),
-    - CSS utiltities via [`TailwindCSS`](https://tailwindcss.com/),
-    - CSS components via [`Naive UI`](https://www.naiveui.com/),
-    - Type checking in script and template via [`Volar / vue-tsc`](https://github.com/johnsoncodehk/volar)
 - 🏎️ **Fast to code**: Database, example tests, example components and example pages are all there for you to fill out
 - 🐛 **Fewer bugs**: Strong data-validation using `Prisma` to validate all data coming into the database at runtime
 - 😊 **Easy to use**: Designed to follow best practices and to be ready-to-go for development, without additional dev-dependencies like `docker` that make it hard to get started
