@@ -15,7 +15,7 @@ To get started, run:
 npm create sidebase@latest
 ```
 
-Afterwards, read [the Getting Started documentation](https://sidebase.io/sidebase/getting-started/quick-start) to continue.
+And you are ready to go! The sidebase CLI will guide you through the process. Afterwards, or if you still want to know more, read [the documentation](https://sidebase.io/sidebase/welcome/stacks) to continue.
 
 ![sidebase](https://raw.githubusercontent.com/sidebase/core/main/.github/sidebase.png)
 
