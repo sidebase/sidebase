@@ -1,8 +1,9 @@
+import type { H3Event } from 'h3'
 import { usePrisma } from '@sidebase/nuxt-prisma'
 
 const startupTime = new Date()
 
-const handler = eventHandler(async (event) => {
+const handler = eventHandler(async (event: H3Event) => {
   const prisma = usePrisma(event)
   try {
     await prisma.$queryRaw`SELECT 1;`
