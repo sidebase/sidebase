@@ -44,7 +44,7 @@ jobs:
       - run: npx prisma generate
 
       # start app in dev mode and load `/`-index page
-      - run: "(timeout 45 npm run dev & (sleep 10 && curl --fail localhost:3000)) && echo Run development check successful"
+      - run: "(timeout 60 npm run dev & (sleep 10 && curl --fail localhost:3000)) && echo Run development check successful"
 
       # build & start app in production mode and load `/`-index page
-      - run: "npm run build && (timeout 45 npm run preview & (sleep 10 && curl --fail localhost:3000)) && echo Run production check successful"
+      - run: "npm run build && (timeout 60 npm run preview & (sleep 10 && curl --fail localhost:3000)) && echo Run production check successful"
