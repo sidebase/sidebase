@@ -19,7 +19,7 @@ FROM dependency-base AS production-base
 COPY . .
 RUN npm run build
 
-FROM $NODE_VERSION-slim AS production
+FROM $NODE_VERSION AS production
 
 COPY --from=production-base /app/.output /app/.output
 
