@@ -22,8 +22,8 @@
     "@nuxtjs/tailwindcss": "^6.2.0",
     "@testing-library/vue": "^6.6.1",
     "@vitejs/plugin-vue": "^3.2.0",
-    "@vitest/coverage-c8": "^0.25.7",
-    "@vitest/ui": "^0.25.7",
+    "@vitest/coverage-c8": "^0.26.0",
+    "@vitest/ui": "^0.26.1",
     "dayjs": "^1.11.7",
     "eslint": "^8.30.0",
     "jsdom": "^20.0.3",
@@ -35,7 +35,7 @@
     "unplugin-vue-components": "^0.22.12",
     "uuid": "^9.0.0",
     "vite-svg-loader": "^3.6.0",
-    "vitest": "^0.25.7"
+    "vitest": "^0.26.1"
   },
   "dependencies": {
     "@prisma/client": "^4.8.0",
