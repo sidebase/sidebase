@@ -1,3 +1,7 @@
+import { setAbsoluteSqliteDatabaseUrlForPrisma } from './prisma/utils'
+
+setAbsoluteSqliteDatabaseUrlForPrisma()
+
 export default defineNuxtConfig({
   runtimeConfig: {
     version: '0.0.1'
