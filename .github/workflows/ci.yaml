@@ -21,6 +21,7 @@ jobs:
       - run: npm ci
 
       # Generate prisma client & push to db
+      - run: export DATABASE_URL=file:./db.sqlite
       - run: npx prisma db push
       - run: npx prisma generate
 
@@ -45,6 +46,7 @@ jobs:
       - run: npm ci
 
       # Generate prisma client & push to db
+      - run: export DATABASE_URL=file:./db.sqlite
       - run: npx prisma db push
       - run: npx prisma generate
 
