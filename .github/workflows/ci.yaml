@@ -20,6 +20,11 @@ jobs:
       # Install packages
       - run: npm ci
 
+      # Generate prisma client & push to db
+      - run: echo "DATABASE_URL=file:./db.sqlite" > .env
+      - run: npx prisma db push
+      - run: npx prisma generate
+
       # Run linting and typechecking
       - run: npm run lint
       - run: npm run typecheck
@@ -40,7 +45,9 @@ jobs:
       # Install packages
       - run: npm ci
 
-      # This is what the user would do, minus actually starting the application
+      # Generate prisma client & push to db
+      - run: echo "DATABASE_URL=file:./db.sqlite" > .env
+      - run: npx prisma db push
       - run: npx prisma generate
 
       # start app in dev mode and load `/`-index page

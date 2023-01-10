@@ -42,7 +42,6 @@
   },
   "dependencies": {
     "@prisma/client": "^4.8.0",
-    "@sidebase/core": "^0.1.4",
-    "@sidebase/nuxt-prisma": "^0.1.0"
+    "@sidebase/core": "^0.1.4"
   }
 }

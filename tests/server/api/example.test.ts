@@ -2,7 +2,7 @@ import { describe, expect, it, beforeEach } from 'vitest'
 import { setup, $fetch } from '@nuxt/test-utils'
 import { faker } from '@faker-js/faker'
 import { Prisma } from '@prisma/client'
-import { resetDatabase } from '@sidebase/nuxt-prisma'
+import { resetDatabase } from '~/prisma/utils'
 
 await setup({
   server: true,

@@ -1,4 +1,4 @@
-import { setAbsoluteSqliteDatabaseUrlForPrisma } from '@sidebase/nuxt-prisma'
+import { setAbsoluteSqliteDatabaseUrlForPrisma } from '../prisma/utils'
 
 /**
  * Setup the database environment.
