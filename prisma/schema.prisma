@@ -11,5 +11,6 @@ datasource db {
 }
 model Example {
   id          String @id @default(uuid())
+  description String
   details     String
 }
