@@ -4,7 +4,7 @@
 [![GitHub stars](https://badgen.net/github/stars/sidebase/sidebase)](https://GitHub.com/sidebase/sidebase/)
 [![License][license-src]][license-href]
 [![Follow us on Twitter](https://badgen.net/badge/icon/twitter?icon=twitter&label)](https://twitter.com/sidebase_io)
-[![Join our Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/auc8eCeGzx)
+[![Join our Discord](https://badgen.net/badge/icon/discord?icon=discord&label)](https://discord.gg/NDDgQkcv3s)
 
 > sidebase is a web development kit to build production ready fullstack Nuxt 3 apps quickly. sidebase relies on modern, fully-typed and best-practice technology to achieve this goal. sidebase embraces the fullstack TypeScript approach to app development: Code sharing between client and server, reduced learning curve for engineers and code-reuse across apps are things we love about this approach. That said, you can also use sidebase to build client-side only apps.
 
