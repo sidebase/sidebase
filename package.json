@@ -4,7 +4,7 @@
     "vue": "latest"
   },
   "scripts": {
-    "dev": "prisma generate && nuxt dev",
+    "dev": "prisma db push && prisma generate && nuxt dev",
     "build": "prisma generate && nuxt build",
     "start": "NODE_ENV=production node .output/server/index.mjs",
     "lint": "eslint .",

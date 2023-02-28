@@ -38,7 +38,7 @@ interface Props {
 const props = defineProps<Props>()
 const editMode = ref(false)
 const newContent = ref(props.todo.content)
-const editinput = ref(null)
+const editinput = ref<HTMLInputElement>()
 const toggleDone = (todo: Todo) => {
   todo.isDone = !todo.isDone
   store.updateTodo(todo)
@@ -46,7 +46,7 @@ const toggleDone = (todo: Todo) => {
 const editTodo = () => {
   editMode.value = !editMode.value
   nextTick(() => {
-    editMode.value && editinput.value.focus()
+    editinput.value?.focus()
   })
 }
 const updateContent = (todo: Todo) => {
@@ -57,7 +57,7 @@ const updateContent = (todo: Todo) => {
 </script>
 
 <style>
-.n-checkbox--checked {
+.n-checkbox--checked .n-checkbox__label {
   @apply line-through opacity-50;
 }
 </style>
