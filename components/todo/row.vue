@@ -1,4 +1,4 @@
-<template v-if="isActive">
+<template>
   <li class="hover:bg-green-100 px-8 py-4 flex justify-between">
     <NCheckbox
       v-if="!editMode"
