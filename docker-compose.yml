@@ -1,0 +1,18 @@
+version: '3.7'
+services:
+  pegazio:
+    image: pegazio
+    build: .
+    container_name: pegazio
+    restart: unless-stopped
+    ports:
+      - $PORT:3000
+    environment:
+      VIRTUAL_HOST: '${DOMAIN}'
+      LETSENCRYPT_HOST: '${DOMAIN}'
+      PUID: '${PUID}'
+      PGID: '${PGID}'
+
+networks:
+  default:
+    name: pegaz

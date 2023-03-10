@@ -3,14 +3,18 @@
 generator client {
   provider = "prisma-client-js"
 }
+
 datasource db {
   // NOTE: You probably want to change this to another database later on
   provider = "sqlite"
   // This value is read from the .env file.
   url      = env("DATABASE_URL")
 }
-model Example {
-  id          String @id @default(uuid())
-  description String
-  details     String
+
+model Todo {
+  id        String   @id @default(uuid())
+  content   String
+  isDone    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
