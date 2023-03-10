@@ -1,0 +1,33 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: deploy
+    image: docker/compose
+    volumes:
+      - name: docker
+        path: /var/run/docker.sock
+      - name: pegaz
+        path: /opt/pegaz
+    environment:
+      CI_DOMAIN:
+        from_secret: CI_DOMAIN
+    commands:
+      - apk add --upgrade bash findutils rsync sed
+      - WORKDIR="/opt/pegaz/services/sidebase"
+      - rm -rf $WORKDIR
+      - mkdir $WORKDIR
+      - rsync -av --exclude  ./node_modules /drone/src/ $WORKDIR
+      - cd $WORKDIR
+      - sed -i "s|DOMAIN=.*|DOMAIN=\"$CI_DOMAIN\"|g" config.sh
+      - bash /opt/pegaz/cli.pegaz.sh build sidebase &2> /dev/null
+      - bash /opt/pegaz/cli.pegaz.sh up sidebase
+
+volumes:
+  - name: pegaz
+    host:
+      path: /opt/pegaz
+  - name: docker
+    host:
+      path: /var/run/docker.sock
