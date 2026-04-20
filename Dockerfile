@@ -1,5 +1,5 @@
 # see https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
-ARG NODE_VERSION=node:16.14.2
+ARG NODE_VERSION=node:20-alpine
 
 FROM $NODE_VERSION AS dependency-base
 

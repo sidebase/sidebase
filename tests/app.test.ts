@@ -1,3 +1,5 @@
+// @vitest-environment node
+
 import { describe, expect, it } from 'vitest'
 import { setup, $fetch } from '@nuxt/test-utils'
 import { expectNoClientErrors } from './utils'

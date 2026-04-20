@@ -1,3 +1,5 @@
+// @vitest-environment node
+
 import { describe, expect, it, beforeEach } from 'vitest'
 import { setup, $fetch } from '@nuxt/test-utils'
 import { faker } from '@faker-js/faker'
@@ -39,7 +41,7 @@ describe('/api/example/:id', () => {
       details: faker.lorem.paragraphs()
     }
 
-    const exampleAfterUpsert = await $fetch(`/api/example/${faker.datatype.uuid()}`, {
+    const exampleAfterUpsert = await $fetch(`/api/example/${faker.string.uuid()}`, {
       method: 'PUT',
       body: exampleToCreate
     })
@@ -61,7 +63,7 @@ describe('/api/example/:id', () => {
       details: faker.lorem.paragraphs()
     }
 
-    const exampleAfterUpsert = await $fetch(`/api/example/${faker.datatype.uuid()}`, {
+    const exampleAfterUpsert = await $fetch(`/api/example/${faker.string.uuid()}`, {
       method: 'PUT',
       body: exampleToCreate
     })
@@ -72,7 +74,7 @@ describe('/api/example/:id', () => {
 
     // 2. Update the entity and check if the value has changed
     const updatePayload: Prisma.ExampleUpdateInput = { description: faker.lorem.paragraphs(), details: faker.lorem.paragraphs() }
-    const exampleAfterUpdate = await $fetch(`/api/example/${faker.datatype.uuid()}`, {
+    const exampleAfterUpdate = await $fetch(`/api/example/${faker.string.uuid()}`, {
       method: 'PUT',
       body: updatePayload
     })
